@@ -18,7 +18,7 @@
       "title": "Bisque",
       "client": "Chef Joe · EP.1",
       "category": "food",
-      "featured": true,
+      "featured": false,
       "deliverable": "คลิปซีรีส์แนวตั้ง 65 วิ",
       "tags": [
         "รีวิวร้านอาหาร",
@@ -54,7 +54,7 @@
         "Vlog",
         "ตัดต่อ"
       ],
-      "featured": true,
+      "featured": false,
       "video": "/media/faye-v-1-261101-223802.mp4"
     },
     {
@@ -68,7 +68,7 @@
         "ถ่ายต่างประเทศ",
         "ตัดต่อ"
       ],
-      "featured": true,
+      "featured": false,
       "video": "/media/reels-60-sec-261101-223616.mp4"
     },
     {
