@@ -43,7 +43,8 @@
       "poster": "/media/ep2-duck.jpg"
     },
     {
-      "title": "event",
+      "title": "Event",
+      "category": "event",
       "featured": true,
       "video": "/media/faye-timelapse-261101-221812.mp4",
       "poster": "/media/faye-timelapse-261101-221812.jpg"
