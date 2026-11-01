@@ -571,7 +571,8 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
         return '<div class="scene ' + SCENES[i % SCENES.length] + '" style="animation-delay:-' + (i * 1.7) + 's"></div>';
       }
       return '<video class="media" src="' + esc(w.video) + '"' + (w.poster ? ' poster="' + esc(w.poster) + '"' : "") +
-        ' muted loop autoplay playsinline preload="' + (inViewer ? "auto" : "metadata") + '"' + (inViewer ? " controls" : "") + "></video>";
+        // no autoplay: the carousel and the on-screen check start clips, so off-screen ones never download
+        ' muted loop playsinline preload="' + (inViewer ? "auto" : "metadata") + '"' + (inViewer ? " controls" : "") + "></video>";
     }
     function reel(w, i, interactive, inViewer) {
       var el = document.createElement(interactive ? "button" : "div");
