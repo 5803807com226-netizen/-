@@ -1,0 +1,8 @@
+// Cloudflare Worker that serves the static site in ./public
+{
+  "name": "work",
+  "compatibility_date": "2025-06-01",
+  "assets": {
+    "directory": "./public"
+  }
+}

@@ -1,6 +1,6 @@
 # Admin forms for Pages CMS (https://pagescms.org). Each form saves its own file in content/.
 media:
-  input: media
+  input: public/media
   output: /media
   rename: safe
 
@@ -8,7 +8,7 @@ content:
   - name: works
     label: ผลงาน
     type: file
-    path: content/works.json
+    path: public/content/works.json
     format: json
     fields:
       - name: works
@@ -62,7 +62,7 @@ content:
   - name: texts
     label: ข้อความหน้าเว็บ
     type: file
-    path: content/texts.json
+    path: public/content/texts.json
     format: json
     fields:
       - name: brand
@@ -128,7 +128,7 @@ content:
   - name: pricing
     label: แพ็กเกจและราคา
     type: file
-    path: content/pricing.json
+    path: public/content/pricing.json
     format: json
     fields:
       - name: packages_intro
@@ -168,7 +168,7 @@ content:
   - name: contact
     label: ช่องทางติดต่อ
     type: file
-    path: content/contact.json
+    path: public/content/contact.json
     format: json
     fields:
       - name: contact
