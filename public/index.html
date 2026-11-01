@@ -167,6 +167,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
   content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
   background: radial-gradient(120% 80% at 50% 40%, transparent 45%, rgba(10,8,6,.75));
 }
+.frame16 .hud { position: absolute; inset: 12px 14px auto; z-index: 2; display: flex; justify-content: space-between; color: #fff; font-family: var(--mono); font-size: .7rem; text-shadow: 0 1px 4px rgba(0,0,0,.5); }
 .reel .hud { position: absolute; inset: 10px 10px auto; z-index: 2; display: flex; justify-content: space-between; color: #fff; font-family: var(--mono); font-size: .65rem; text-shadow: 0 1px 4px rgba(0,0,0,.5); }
 .reel .cap { position: absolute; inset: auto 12px 12px; z-index: 2; color: #fff; }
 .reel .cap small { display: block; font-family: var(--mono); font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; opacity: .8; }
@@ -216,6 +217,69 @@ section { padding-block: 104px 0; }
 .grid .reel:nth-child(3n+2) { transform: translateY(56px); }
 @media (max-width: 900px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .grid .reel { transform: none !important; } }
 @media (max-width: 560px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+/* format tabs: short-form / long-form / photography */
+.formats { display: flex; gap: 6px 32px; flex-wrap: wrap; border-bottom: 1px solid var(--line); margin-bottom: 28px; }
+.fmt { position: relative; padding: 0 0 14px; border: 0; background: none; cursor: pointer; color: var(--muted); font: 400 clamp(1.4rem, 3vw, 2rem)/1 var(--display); text-transform: uppercase; letter-spacing: .01em; transition: color .25s; }
+.fmt sup { font: 400 .7rem var(--mono); letter-spacing: .06em; color: var(--tungsten); margin-left: 6px; vertical-align: top; }
+.fmt:hover { color: var(--paper); }
+.fmt[aria-selected="true"] { color: var(--paper); }
+.fmt::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--tungsten); transform: scaleX(0); transform-origin: left; transition: transform .45s cubic-bezier(.2,.7,.2,1); }
+.fmt[aria-selected="true"]::after { transform: none; }
+.panel.show { animation: rise .6s cubic-bezier(.2,.7,.2,1) both; }
+
+/* long-form: 16:9 films, the first one runs full width */
+.films { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 44px 16px; }
+.film { display: grid; gap: 14px; align-content: start; min-width: 0; padding: 0; border: 0; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+.film:first-child { grid-column: 1 / -1; }
+.frame16 { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--ink-2); isolation: isolate; }
+.frame16 .media { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; transition: transform 1.4s cubic-bezier(.2,.7,.2,1); }
+.frame16::after { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(130% 90% at 50% 45%, transparent 55%, rgba(10,8,6,.7)); }
+.frame16 .bars::before, .frame16 .bars::after { /* letterbox closes in on hover */
+  content: ""; position: absolute; left: 0; right: 0; height: 0; z-index: 1; background: #000; transition: height .6s cubic-bezier(.2,.7,.2,1);
+}
+.frame16 .bars::before { top: 0; } .frame16 .bars::after { bottom: 0; }
+.film:hover .frame16 .bars::before, .film:hover .frame16 .bars::after, .film:focus-visible .frame16 .bars::before, .film:focus-visible .frame16 .bars::after { height: 9%; }
+.film:hover .media { transform: scale(1.04); }
+.film:hover .play, .film:focus-visible .play { opacity: 1; }
+.film-cap { display: flex; justify-content: space-between; align-items: end; gap: 16px; }
+.film-cap h3 { font-size: var(--step-1); font-weight: 500; line-height: 1.3; margin-top: 4px; }
+.film:first-child .film-cap h3 { font-size: var(--step-2); }
+.film-cap .mono { color: var(--muted); white-space: nowrap; }
+@media (max-width: 760px) { .films { grid-template-columns: minmax(0, 1fr); } }
+
+/* photography: albums as a stack of prints that fans out on hover */
+.albums { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px 24px; }
+.album { display: grid; gap: 16px; align-content: start; min-width: 0; padding: 0; border: 0; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+.prints { position: relative; aspect-ratio: 4 / 5; }
+.prints img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: var(--ink-2); box-shadow: 0 24px 50px -24px rgba(0,0,0,.9); transition: transform .7s cubic-bezier(.2,.7,.2,1), filter .7s; }
+.prints img:nth-child(2) { transform: rotate(-2.5deg) scale(.96); filter: brightness(.55); }
+.prints img:nth-child(3) { transform: rotate(2deg) scale(.94); filter: brightness(.4); }
+.prints img:first-child { z-index: 3; }
+.prints img:nth-child(2) { z-index: 2; }
+.album:hover .prints img:first-child, .album:focus-visible .prints img:first-child { transform: translateY(-6px) rotate(-1deg); }
+.album:hover .prints img:nth-child(2), .album:focus-visible .prints img:nth-child(2) { transform: translateX(-12%) rotate(-7deg) scale(.92); filter: brightness(.7); }
+.album:hover .prints img:nth-child(3), .album:focus-visible .prints img:nth-child(3) { transform: translateX(12%) rotate(6deg) scale(.9); filter: brightness(.6); }
+.album-cap { display: flex; justify-content: space-between; align-items: end; gap: 12px; }
+.album-cap h3 { font-size: var(--step-1); font-weight: 500; line-height: 1.3; margin-top: 4px; }
+.album-cap .mono { color: var(--muted); white-space: nowrap; }
+@media (max-width: 900px) { .albums { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 14px; } }
+@media (max-width: 480px) { .album-cap { display: grid; gap: 4px; } .album-cap h3 { font-size: 1rem; } }
+
+/* photo lightbox */
+.lightbox { position: fixed; inset: 0; z-index: 60; background: #080605; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 14px; padding: calc(16px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) calc(16px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); touch-action: pan-y; }
+.lb-top { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.lb-top .label b { color: var(--paper); font-weight: 400; }
+.lb-stage { position: relative; min-height: 0; }
+.lb-stage img { position: absolute; inset: 0; margin: auto; max-width: 100%; max-height: 100%; box-shadow: 0 30px 80px -30px #000; }
+.lb-stage img.in { animation: develop .6s ease-out both; }
+@keyframes develop { from { opacity: 0; filter: brightness(1.8) saturate(0); } }
+.lb-stage .arrow { position: absolute; top: 50%; margin-top: -22px; background: rgba(15,13,11,.6); }
+.lb-stage .arrow.l { left: 0; } .lb-stage .arrow.r { right: 0; }
+.thumbs { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; justify-content: safe center; }
+.thumbs button { flex: none; width: 52px; height: 52px; padding: 0; border: 1px solid transparent; background: none; cursor: pointer; opacity: .45; transition: opacity .2s, border-color .2s; }
+.thumbs button[aria-current="true"] { opacity: 1; border-color: var(--tungsten); }
+.thumbs img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
 .work-cta { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 80px; padding-top: 24px; border-top: 1px solid var(--line); }
 .work-cta p { font-size: var(--step-1); font-weight: 500; }
 
@@ -297,6 +361,8 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 /* viewer */
 .viewer { position: fixed; inset: 0; z-index: 60; background: rgba(8,6,5,.92); display: grid; place-items: center; padding: 24px; }
 .viewer .reel { height: min(80vh, 720px); width: auto; }
+.viewer .wide { width: min(100%, calc(80vh * 16 / 9)); aspect-ratio: 16 / 9; background: #000; }
+.viewer .wide video { width: 100%; height: 100%; display: block; }
 .viewer .close { position: absolute; top: calc(16px + env(safe-area-inset-top, 0px)); right: max(16px, env(safe-area-inset-right, 0px)); }
 
 /* custom cursor (mouse only) */
@@ -363,9 +429,22 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
     <div class="wrap">
       <div class="sec-head">
         <h2>Selected <em>work</em></h2>
-        <div class="filters" id="filters" role="group" aria-label="กรองผลงาน"></div>
       </div>
-      <div class="grid" id="grid"></div>
+      <div class="formats" id="formats" role="tablist" aria-label="ประเภทผลงาน">
+        <button class="fmt" type="button" role="tab" id="t-short" aria-controls="p-short" data-p="short">Short-form<sup id="c-short"></sup></button>
+        <button class="fmt" type="button" role="tab" id="t-long" aria-controls="p-long" data-p="long">Long-form<sup id="c-long"></sup></button>
+        <button class="fmt" type="button" role="tab" id="t-photo" aria-controls="p-photo" data-p="photo">Photography<sup id="c-photo"></sup></button>
+      </div>
+      <div class="panel" id="p-short" role="tabpanel" aria-labelledby="t-short">
+        <div class="filters" id="filters" role="group" aria-label="กรองผลงาน"></div>
+        <div class="grid" id="grid"></div>
+      </div>
+      <div class="panel" id="p-long" role="tabpanel" aria-labelledby="t-long" hidden>
+        <div class="films" id="films"></div>
+      </div>
+      <div class="panel" id="p-photo" role="tabpanel" aria-labelledby="t-photo" hidden>
+        <div class="albums" id="albums"></div>
+      </div>
       <div class="work-cta">
         <p id="work-cta"></p>
         <a class="btn solid" href="#contact">จองคิวถ่าย</a>
@@ -420,6 +499,18 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
   <button class="btn close" type="button" id="close-viewer">ปิด ✕</button>
   <div id="viewer-slot"></div>
 </div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="ดูภาพถ่าย" hidden>
+  <div class="lb-top">
+    <span class="label"><b id="lb-title"></b> · <span id="lb-n"></span></span>
+    <button class="btn" type="button" id="lb-close">ปิด ✕</button>
+  </div>
+  <div class="lb-stage" id="lb-stage">
+    <img id="lb-img" alt="">
+    <button class="arrow l" type="button" id="lb-prev" aria-label="ภาพก่อนหน้า">←</button>
+    <button class="arrow r" type="button" id="lb-next" aria-label="ภาพถัดไป">→</button>
+  </div>
+  <div class="thumbs" id="lb-thumbs"></div>
+</div>
 <div class="cursor" id="cursor" aria-hidden="true"><span>▶ PLAY</span></div>
 
 <script>
@@ -438,8 +529,10 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
   function pad(n) { return String(n).padStart(2, "0"); }
   function clock(sec) { sec = Math.round(sec); return Math.floor(sec / 60) + ":" + pad(sec % 60); }
 
-  Promise.all(["works", "texts", "pricing", "contact"].map(function (name) {
-    return fetch("content/" + name + ".json", { cache: "no-cache" }).then(function (r) { return r.json(); });
+  var OPTIONAL = ["longform", "photos"];
+  Promise.all(["works", "texts", "pricing", "contact"].concat(OPTIONAL).map(function (name) {
+    var req = fetch("content/" + name + ".json", { cache: "no-cache" }).then(function (r) { return r.json(); });
+    return OPTIONAL.indexOf(name) < 0 ? req : req.catch(function () { return {}; });
   }))
     .then(function (parts) { render(Object.assign.apply(null, [{}].concat(parts))); })
     .catch(function () {
@@ -605,6 +698,111 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
       grid.querySelectorAll(".reel").forEach(function (el) { io.observe(el); });
     }
 
+    // ---------- long-form films ----------
+    var films = (d.films || []).filter(function (f) { return f && (f.title || f.video); });
+    $("films").innerHTML = films.map(function (f, i) {
+      var media = f.poster ? '<img class="media" src="' + esc(f.poster) + '" alt="" loading="lazy">'
+        : '<div class="scene ' + SCENES[(i + 3) % SCENES.length] + '"></div>';
+      return '<button class="film" type="button" data-f="' + i + '" aria-label="เปิดดู ' + esc(f.title) + '">' +
+        '<div class="frame16">' + media + '<span class="bars"></span>' +
+        '<div class="hud"><span>16:9 · ' + pad(i + 1) + '</span><span class="dur"></span></div>' +
+        '<div class="play"><b>▶ PLAY</b></div></div>' +
+        '<div class="film-cap"><div><span class="label">' + esc(f.client) + "</span><h3>" + esc(f.title) + "</h3></div>" +
+        '<span class="mono">' + esc(f.deliverable) + "</span></div></button>";
+    }).join("");
+    // read each film's length without downloading the clip
+    films.forEach(function (f, i) {
+      if (!f.video) return;
+      var probe = document.createElement("video");
+      probe.preload = "metadata"; probe.muted = true; probe.src = f.video;
+      probe.addEventListener("loadedmetadata", function () {
+        var el = $("films").querySelector('[data-f="' + i + '"] .dur');
+        if (el && isFinite(probe.duration)) el.textContent = clock(probe.duration);
+        probe.removeAttribute("src"); probe.load();
+      });
+    });
+    $("films").addEventListener("click", function (e) {
+      var el = e.target.closest(".film"); if (!el) return;
+      var f = films[+el.dataset.f]; if (!f.video) return;
+      slot.innerHTML = '<div class="wide"><video src="' + esc(f.video) + '"' + (f.poster ? ' poster="' + esc(f.poster) + '"' : "") + ' controls playsinline preload="auto"></video></div>';
+      play(slot.querySelector("video"), true);
+      viewer.hidden = false; $("close-viewer").focus();
+    });
+
+    // ---------- photo albums + lightbox ----------
+    function pics(a) { var p = a.photos; return (Array.isArray(p) ? p : p ? [p] : []).filter(Boolean); }
+    var albums = (d.albums || []).filter(function (a) { return a && pics(a).length; });
+    $("albums").innerHTML = albums.map(function (a, i) {
+      var p = pics(a), stack = p.slice(0, 3).map(function (src) { return '<img src="' + esc(src) + '" alt="" loading="lazy">'; }).join("");
+      return '<button class="album" type="button" data-a="' + i + '" aria-label="เปิดอัลบั้ม ' + esc(a.title) + '">' +
+        '<div class="prints">' + stack + "</div>" +
+        '<div class="album-cap"><div><span class="label">' + esc(a.client) + "</span><h3>" + esc(a.title) + "</h3></div>" +
+        '<span class="mono">' + p.length + " ภาพ</span></div></button>";
+    }).join("");
+    var lb = $("lightbox"), lbImg = $("lb-img"), lbThumbs = $("lb-thumbs"), album = [], shot = 0;
+    function show(i) {
+      shot = (i + album.length) % album.length;
+      lbImg.src = album[shot]; lbImg.classList.remove("in"); void lbImg.offsetWidth; lbImg.classList.add("in");
+      $("lb-n").textContent = pad(shot + 1) + " / " + pad(album.length);
+      lbThumbs.querySelectorAll("button").forEach(function (b, j) { b.setAttribute("aria-current", String(j === shot)); });
+      var cur = lbThumbs.children[shot]; if (cur) cur.scrollIntoView({ block: "nearest", inline: "center" });
+      new Image().src = album[(shot + 1) % album.length];
+    }
+    $("albums").addEventListener("click", function (e) {
+      var el = e.target.closest(".album"); if (!el) return;
+      var a = albums[+el.dataset.a];
+      album = pics(a);
+      $("lb-title").textContent = a.title || "";
+      lbThumbs.innerHTML = album.map(function (src, j) { return '<button type="button" data-j="' + j + '" aria-label="ภาพที่ ' + (j + 1) + '"><img src="' + esc(src) + '" alt="" loading="lazy"></button>'; }).join("");
+      lbThumbs.hidden = album.length < 2;
+      $("lb-prev").hidden = $("lb-next").hidden = album.length < 2;
+      lb.hidden = false; document.body.style.overflow = "hidden";
+      show(0); $("lb-close").focus();
+    });
+    function closeLb() { lb.hidden = true; lbImg.removeAttribute("src"); document.body.style.overflow = ""; }
+    lbThumbs.addEventListener("click", function (e) { var b = e.target.closest("[data-j]"); if (b) show(+b.dataset.j); });
+    $("lb-prev").addEventListener("click", function () { show(shot - 1); });
+    $("lb-next").addEventListener("click", function () { show(shot + 1); });
+    $("lb-close").addEventListener("click", closeLb);
+    $("lb-stage").addEventListener("click", function (e) { if (e.target.id === "lb-stage") closeLb(); });
+    var lx = null;
+    lb.addEventListener("pointerdown", function (e) { lx = e.clientX; });
+    lb.addEventListener("pointerup", function (e) {
+      if (lx === null) return; var dx = e.clientX - lx; lx = null;
+      if (Math.abs(dx) > 50 && album.length > 1) show(shot + (dx < 0 ? 1 : -1));
+    });
+    document.addEventListener("keydown", function (e) {
+      if (lb.hidden) return;
+      if (e.key === "Escape") closeLb();
+      else if (e.key === "ArrowRight") show(shot + 1);
+      else if (e.key === "ArrowLeft") show(shot - 1);
+    });
+
+    // ---------- format tabs (hidden when there is only one kind of work) ----------
+    var counts = { short: works.length, long: films.length, photo: albums.length };
+    var tabs = [].slice.call(document.querySelectorAll(".fmt"));
+    tabs.forEach(function (t) {
+      var c = counts[t.dataset.p];
+      t.hidden = !c; $("c-" + t.dataset.p).textContent = pad(c);
+      t.addEventListener("click", function () { pick(t.dataset.p); });
+    });
+    $("formats").hidden = tabs.filter(function (t) { return !t.hidden; }).length < 2;
+    function pick(p) {
+      tabs.forEach(function (t) {
+        var on = t.dataset.p === p, panel = $("p-" + t.dataset.p);
+        t.setAttribute("aria-selected", String(on)); t.tabIndex = on ? 0 : -1;
+        panel.hidden = !on; panel.classList.toggle("show", on);
+        if (!on) panel.querySelectorAll("video").forEach(function (v) { v.pause(); });
+      });
+    }
+    $("formats").addEventListener("keydown", function (e) {
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      var vis = tabs.filter(function (t) { return !t.hidden; }), i = vis.indexOf(document.activeElement);
+      var next = vis[(i + (e.key === "ArrowRight" ? 1 : -1) + vis.length) % vis.length];
+      next.focus(); pick(next.dataset.p);
+    });
+    pick((tabs.filter(function (t) { return !t.hidden; })[0] || tabs[0]).dataset.p);
+
     // ---------- viewer ----------
     function openViewer(i) {
       slot.innerHTML = "";
@@ -671,9 +869,12 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
     // ---------- cursor ----------
     var cur = $("cursor");
     if (matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      var curLabel = cur.querySelector("span");
       document.addEventListener("mousemove", function (e) {
         cur.style.left = e.clientX + "px"; cur.style.top = e.clientY + "px";
-        cur.classList.toggle("on", !!(e.target.closest && e.target.closest("#grid .reel, #stage .reel.is-active")));
+        var t = e.target.closest && e.target.closest("#grid .reel, #stage .reel.is-active, .film, .album");
+        cur.classList.toggle("on", !!t);
+        if (t) curLabel.textContent = t.classList.contains("album") ? "VIEW" : "▶ PLAY";
       });
     }
   }

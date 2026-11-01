@@ -59,6 +59,68 @@ content:
             label: ภาพปกคลิป (.jpg ที่ได้มาคู่กับคลิป)
             type: image
 
+  - name: longform
+    label: คลิปยาว (16:9)
+    type: file
+    path: public/content/longform.json
+    format: json
+    fields:
+      - name: films
+        label: คลิปยาวทั้งหมด (ลากเรียงลำดับได้ ชิ้นบนสุดแสดงใหญ่เต็มแถว)
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{index}. {title} · {client}"
+        fields:
+          - name: title
+            label: ชื่องาน
+            type: string
+            required: true
+          - name: client
+            label: ลูกค้า / ซีรีส์ (ตัวเล็กเหนือชื่องาน)
+            type: string
+          - name: deliverable
+            label: ข้อความเล็กด้านขวา (เช่น สารคดี 4 นาที)
+            type: string
+          - name: video
+            label: คลิป (.mp4 ที่ย่อด้วยเครื่องมือย่อคลิปแล้ว ไม่เกิน 20MB)
+            type: file
+            options:
+              extensions: [mp4]
+          - name: poster
+            label: ภาพปกคลิป (.jpg ที่ได้มาคู่กับคลิป)
+            type: image
+
+  - name: photos
+    label: ภาพถ่าย
+    type: file
+    path: public/content/photos.json
+    format: json
+    fields:
+      - name: albums
+        label: อัลบั้มภาพถ่าย (ลากเรียงลำดับได้ อัลบั้มบนสุดขึ้นก่อน)
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{index}. {title} · {client}"
+        fields:
+          - name: title
+            label: ชื่ออัลบั้ม / ชื่องาน
+            type: string
+            required: true
+          - name: client
+            label: ลูกค้า / ประเภทงาน (ตัวเล็กเหนือชื่อ)
+            type: string
+          - name: photos
+            label: ภาพในอัลบั้ม (ภาพแรกเป็นปก ลากเรียงได้ ใช้ภาพที่ย่อด้วยเครื่องมือย่อภาพแล้ว)
+            type: image
+            options:
+              multiple:
+                max: 60
+              extensions: [jpg, jpeg, png, webp]
+
   - name: texts
     label: ข้อความหน้าเว็บ
     type: file
