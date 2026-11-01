@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="รับถ่ายวิดีโอและทำคอนเทนต์สำหรับอีเวนต์และแบรนด์">
+<meta name="description" id="meta-desc" content="รับถ่ายวิดีโอและทำคอนเทนต์สำหรับอีเวนต์และแบรนด์">
 <link rel="icon" id="favicon" href="data:,">
 <link rel="apple-touch-icon" id="touch-icon" href="data:,">
 <style>html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
@@ -92,6 +92,12 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .btn:hover { background: var(--paper); color: var(--ink); }
 .btn.solid { background: var(--tungsten); border-color: var(--tungsten); color: var(--ink); }
 .btn.solid:hover { background: var(--paper); border-color: var(--paper); }
+.bar-end { display: flex; align-items: center; gap: 12px; }
+.lang-switch { display: flex; padding: 3px; border: 1px solid var(--line); border-radius: 999px; }
+.lang-switch button { padding: 5px 9px; border: 0; border-radius: 999px; background: none; color: var(--muted); font: 500 .72rem var(--mono); letter-spacing: .08em; cursor: pointer; transition: background .2s, color .2s; }
+.lang-switch button:hover { color: var(--paper); }
+.lang-switch button[aria-pressed="true"] { background: var(--paper); color: var(--ink); }
+@media (max-width: 420px) { .bar-end { gap: 8px; } .bar-end .btn { padding: 9px 14px; } }
 @media (max-width: 760px) { .nav { display: none; } }
 
 /* ---------- hero ---------- */
@@ -386,13 +392,18 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 <header class="bar">
   <div class="wrap">
     <a class="brand" href="#top"><span class="brand-mark" id="brand"></span></a>
-    <nav class="nav" aria-label="เมนูหลัก">
-      <a href="#work">ผลงาน</a>
-      <a href="#services">บริการ</a>
-      <a href="#packages">แพ็กเกจ</a>
-      <a href="#process">ขั้นตอน</a>
+    <nav class="nav" aria-label="เมนูหลัก" data-i18n-aria="menu">
+      <a href="#work" data-i18n="nav_work">ผลงาน</a>
+      <a href="#services" data-i18n="nav_services">บริการ</a>
+      <a href="#packages" data-i18n="nav_packages">แพ็กเกจ</a>
+      <a href="#process" data-i18n="nav_process">ขั้นตอน</a>
     </nav>
-    <a class="btn solid" href="#contact">จองคิวถ่าย</a>
+    <div class="bar-end">
+      <div class="lang-switch" role="group" aria-label="Language / ภาษา">
+        <button type="button" data-lang="th">TH</button><button type="button" data-lang="en">EN</button>
+      </div>
+      <a class="btn solid" href="#contact" data-i18n="book">จองคิวถ่าย</a>
+    </div>
   </div>
 </header>
 
@@ -406,23 +417,23 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
           <p class="hero-lede" id="hero-intro"></p>
         </div>
 
-        <div class="stage" id="stage" aria-roledescription="carousel" aria-label="ผลงานเด่น"></div>
+        <div class="stage" id="stage" aria-roledescription="carousel" aria-label="ผลงานเด่น" data-i18n-aria="featured"></div>
 
         <div class="hero-feat">
           <div class="feat" id="feat" aria-live="polite">
             <div class="feat-meta label"><span id="feat-n"></span><span id="feat-client"></span></div>
             <h2 id="feat-title"></h2>
             <div class="tags" id="feat-tags"></div>
-            <div class="result"><span class="label">ส่งมอบ</span><b id="feat-res"></b></div>
+            <div class="result"><span class="label" data-i18n="delivered">ส่งมอบ</span><b id="feat-res"></b></div>
           </div>
           <div class="controls">
-            <button class="arrow" type="button" id="prev" aria-label="ผลงานก่อนหน้า">←</button>
+            <button class="arrow" type="button" id="prev" aria-label="ผลงานก่อนหน้า" data-i18n-aria="prev_work">←</button>
             <div class="progress" id="progress"></div>
-            <button class="arrow" type="button" id="next" aria-label="ผลงานถัดไป">→</button>
+            <button class="arrow" type="button" id="next" aria-label="ผลงานถัดไป" data-i18n-aria="next_work">→</button>
           </div>
           <div class="hero-actions">
-            <a class="btn solid" href="#packages">ดูแพ็กเกจและราคา</a>
-            <a class="btn" href="#work">ผลงานทั้งหมด ↓</a>
+            <a class="btn solid" href="#packages" data-i18n="see_packages">ดูแพ็กเกจและราคา</a>
+            <a class="btn" href="#work" data-i18n="all_work">ผลงานทั้งหมด ↓</a>
           </div>
         </div>
       </div>
@@ -434,13 +445,13 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
       <div class="sec-head">
         <h2>Selected <em>work</em></h2>
       </div>
-      <div class="formats" id="formats" role="tablist" aria-label="ประเภทผลงาน">
+      <div class="formats" id="formats" role="tablist" aria-label="ประเภทผลงาน" data-i18n-aria="work_types">
         <button class="fmt" type="button" role="tab" id="t-short" aria-controls="p-short" data-p="short">Short-form<sup id="c-short"></sup></button>
         <button class="fmt" type="button" role="tab" id="t-long" aria-controls="p-long" data-p="long">Long-form<sup id="c-long"></sup></button>
         <button class="fmt" type="button" role="tab" id="t-photo" aria-controls="p-photo" data-p="photo">Photography<sup id="c-photo"></sup></button>
       </div>
       <div class="panel" id="p-short" role="tabpanel" aria-labelledby="t-short">
-        <div class="filters" id="filters" role="group" aria-label="กรองผลงาน"></div>
+        <div class="filters" id="filters" role="group" aria-label="กรองผลงาน" data-i18n-aria="filter_work"></div>
         <div class="grid" id="grid"></div>
       </div>
       <div class="panel" id="p-long" role="tabpanel" aria-labelledby="t-long" hidden>
@@ -451,7 +462,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
       </div>
       <div class="work-cta">
         <p id="work-cta"></p>
-        <a class="btn solid" href="#contact">จองคิวถ่าย</a>
+        <a class="btn solid" href="#contact" data-i18n="book">จองคิวถ่าย</a>
       </div>
     </div>
   </section>
@@ -500,18 +511,18 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 </footer>
 
 <div class="viewer" id="viewer" hidden>
-  <button class="btn close" type="button" id="close-viewer">ปิด ✕</button>
+  <button class="btn close" type="button" id="close-viewer" data-i18n="close">ปิด ✕</button>
   <div id="viewer-slot"></div>
 </div>
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="ดูภาพถ่าย" hidden>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="ดูภาพถ่าย" data-i18n-aria="photo_view" hidden>
   <div class="lb-top">
     <span class="label"><b id="lb-title"></b> · <span id="lb-n"></span></span>
-    <button class="btn" type="button" id="lb-close">ปิด ✕</button>
+    <button class="btn" type="button" id="lb-close" data-i18n="close">ปิด ✕</button>
   </div>
   <div class="lb-stage" id="lb-stage">
     <img id="lb-img" alt="">
-    <button class="arrow l" type="button" id="lb-prev" aria-label="ภาพก่อนหน้า">←</button>
-    <button class="arrow r" type="button" id="lb-next" aria-label="ภาพถัดไป">→</button>
+    <button class="arrow l" type="button" id="lb-prev" aria-label="ภาพก่อนหน้า" data-i18n-aria="prev_photo">←</button>
+    <button class="arrow r" type="button" id="lb-next" aria-label="ภาพถัดไป" data-i18n-aria="next_photo">→</button>
   </div>
   <div class="thumbs" id="lb-thumbs"></div>
 </div>
@@ -520,7 +531,64 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 <script>
 (function () {
   // All text, works and prices live in content/*.json and are edited from the admin (Pages CMS, see .pages.yml).
-  var CATEGORIES = { event: "อีเวนต์ · คอนเสิร์ต", brand: "แบรนด์ · สินค้า", food: "อาหาร · เชฟ", charity: "มูลนิธิ · CSR" };
+
+  // ---------- language: ?lang= in the link, else the last choice, else the browser's language ----------
+  var LANG = (function () {
+    var q = new URLSearchParams(location.search).get("lang"), saved = null;
+    if (q === "th" || q === "en") { try { localStorage.setItem("lang", q); } catch (e) {} return q; }
+    try { saved = localStorage.getItem("lang"); } catch (e) {}
+    if (saved === "th" || saved === "en") return saved;
+    return /^th/i.test(navigator.language || "") ? "th" : "en";
+  })();
+  var UI = {
+    th: {
+      meta_desc: "รับถ่ายวิดีโอและทำคอนเทนต์สำหรับอีเวนต์และแบรนด์", menu: "เมนูหลัก",
+      nav_work: "ผลงาน", nav_services: "บริการ", nav_packages: "แพ็กเกจ", nav_process: "ขั้นตอน", book: "จองคิวถ่าย",
+      featured: "ผลงานเด่น", delivered: "ส่งมอบ", prev_work: "ผลงานก่อนหน้า", next_work: "ผลงานถัดไป",
+      see_packages: "ดูแพ็กเกจและราคา", all_work: "ผลงานทั้งหมด ↓", work_types: "ประเภทผลงาน", filter_work: "กรองผลงาน",
+      close: "ปิด ✕", photo_view: "ดูภาพถ่าย", prev_photo: "ภาพก่อนหน้า", next_photo: "ภาพถัดไป",
+      load_error: "โหลดข้อมูลเว็บไม่สำเร็จ ลองรีเฟรชหน้าอีกครั้ง", open: "เปิดดู ", open_album: "เปิดอัลบั้ม ",
+      work_n: "ผลงานที่ ", photo_n: "ภาพที่ ", photos: " ภาพ", all: "ทั้งหมด", popular: "ยอดนิยม",
+      choose: "เลือกแพ็กเกจนี้", copy: "คัดลอก", copied: "คัดลอกแล้ว", copy_key: "กด Ctrl+C",
+      cat: { event: "อีเวนต์ · คอนเสิร์ต", brand: "แบรนด์ · สินค้า", food: "อาหาร · เชฟ", charity: "มูลนิธิ · CSR" }
+    },
+    en: {
+      meta_desc: "Event and brand videos, photos and content", menu: "Main menu",
+      nav_work: "Work", nav_services: "Services", nav_packages: "Packages", nav_process: "Process", book: "Book a shoot",
+      featured: "Featured work", delivered: "Delivered", prev_work: "Previous work", next_work: "Next work",
+      see_packages: "See packages & pricing", all_work: "All work ↓", work_types: "Type of work", filter_work: "Filter work",
+      close: "Close ✕", photo_view: "Photo viewer", prev_photo: "Previous photo", next_photo: "Next photo",
+      load_error: "Couldn't load the site. Please refresh the page.", open: "Watch ", open_album: "Open album ",
+      work_n: "Work ", photo_n: "Photo ", photos: " photos", all: "All", popular: "Popular",
+      choose: "Choose this package", copy: "Copy", copied: "Copied", copy_key: "Press Ctrl+C",
+      cat: { event: "Events · Concerts", brand: "Brands · Products", food: "Food · Chefs", charity: "Foundations · CSR" }
+    }
+  }[LANG];
+  var CATEGORIES = UI.cat;
+  document.documentElement.lang = LANG;
+  document.getElementById("meta-desc").content = UI.meta_desc;
+  document.querySelectorAll("[data-i18n]").forEach(function (el) { el.textContent = UI[el.dataset.i18n]; });
+  document.querySelectorAll("[data-i18n-aria]").forEach(function (el) { el.setAttribute("aria-label", UI[el.dataset.i18nAria]); });
+  document.querySelectorAll(".lang-switch button").forEach(function (b) {
+    b.setAttribute("aria-pressed", String(b.dataset.lang === LANG));
+    b.addEventListener("click", function () {
+      if (b.dataset.lang === LANG) return;
+      var u = new URL(location.href); u.searchParams.set("lang", b.dataset.lang);
+      location.replace(u.href);
+    });
+  });
+  // in English, every "x_en" field filled in the admin replaces "x"; empty ones fall back to Thai
+  function localize(o) {
+    if (Array.isArray(o)) { o.forEach(localize); return o; }
+    if (!o || typeof o !== "object") return o;
+    Object.keys(o).forEach(function (k) {
+      localize(o[k]);
+      if (LANG !== "en" || !/_en$/.test(k)) return;
+      var v = o[k];
+      if (Array.isArray(v) ? v.some(Boolean) : v) o[k.slice(0, -3)] = v;
+    });
+    return o;
+  }
   var SCENES = ["s-food", "s-brand", "s-travel", "s-event", "s-cafe", "s-beauty", "s-product", "s-fashion"];
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   var $ = function (id) { return document.getElementById(id); };
@@ -538,9 +606,9 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
     var req = fetch("content/" + name + ".json", { cache: "no-cache" }).then(function (r) { return r.json(); });
     return OPTIONAL.indexOf(name) < 0 ? req : req.catch(function () { return {}; });
   }))
-    .then(function (parts) { render(Object.assign.apply(null, [{}].concat(parts))); })
+    .then(function (parts) { render(localize(Object.assign.apply(null, [{}].concat(parts)))); })
     .catch(function () {
-      $("hero-intro").textContent = "โหลดข้อมูลเว็บไม่สำเร็จ ลองรีเฟรชหน้าอีกครั้ง";
+      $("hero-intro").textContent = UI.load_error;
     });
 
   function render(d) {
@@ -583,7 +651,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
     }
     function reel(w, i, interactive, inViewer) {
       var el = document.createElement(interactive ? "button" : "div");
-      if (interactive) { el.type = "button"; el.setAttribute("aria-label", "เปิดดู " + (w.title || "")); }
+      if (interactive) { el.type = "button"; el.setAttribute("aria-label", UI.open + (w.title || "")); }
       el.className = "reel";
       el.dataset.c = w.category || "";
       el.dataset.i = i;
@@ -621,7 +689,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
       el.addEventListener("click", function () { if (i === active) openViewer(idx); else go(i); });
       stage.appendChild(el);
       var b = document.createElement("button");
-      b.type = "button"; b.setAttribute("aria-label", "ผลงานที่ " + (i + 1)); b.innerHTML = "<i></i>";
+      b.type = "button"; b.setAttribute("aria-label", UI.work_n + (i + 1)); b.innerHTML = "<i></i>";
       b.addEventListener("click", function () { go(i); });
       progress.appendChild(b);
       return el;
@@ -696,7 +764,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
     var used = [];
     works.forEach(function (w) { if (w.category && used.indexOf(w.category) < 0) used.push(w.category); });
     var filters = $("filters");
-    filters.innerHTML = '<button class="chip" type="button" data-f="all" aria-pressed="true">ทั้งหมด</button>' +
+    filters.innerHTML = '<button class="chip" type="button" data-f="all" aria-pressed="true">' + UI.all + '</button>' +
       used.map(function (c) { return '<button class="chip" type="button" data-f="' + esc(c) + '" aria-pressed="false">' + esc(CATEGORIES[c] || c) + "</button>"; }).join("");
     filters.hidden = used.length < 2;
     var chips = filters.querySelectorAll(".chip");
@@ -723,7 +791,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
     $("films").innerHTML = films.map(function (f, i) {
       var media = f.poster ? '<img class="media" src="' + esc(f.poster) + '" alt="" loading="lazy" onerror="this.remove()">'
         : '<div class="scene ' + SCENES[(i + 3) % SCENES.length] + '"></div>';
-      return '<button class="film" type="button" data-f="' + i + '" aria-label="เปิดดู ' + esc(f.title) + '">' +
+      return '<button class="film" type="button" data-f="' + i + '" aria-label="' + UI.open + esc(f.title) + '">' +
         '<div class="frame16">' + media + '<span class="bars"></span>' +
         '<div class="hud"><span>16:9 · ' + pad(i + 1) + '</span><span class="dur"></span></div>' +
         '<div class="play"><b>▶ PLAY</b></div></div>' +
@@ -755,10 +823,10 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
     var albums = (d.albums || []).filter(function (a) { return a && pics(a).length; });
     $("albums").innerHTML = albums.map(function (a, i) {
       var p = pics(a), stack = p.slice(0, 3).map(function (src) { return '<img src="' + esc(src) + '" alt="" loading="lazy">'; }).join("");
-      return '<button class="album" type="button" data-a="' + i + '" aria-label="เปิดอัลบั้ม ' + esc(a.title) + '">' +
+      return '<button class="album" type="button" data-a="' + i + '" aria-label="' + UI.open_album + esc(a.title) + '">' +
         '<div class="prints">' + stack + "</div>" +
         '<div class="album-cap"><div><span class="label">' + esc(a.client) + "</span><h3>" + esc(a.title) + "</h3></div>" +
-        '<span class="mono">' + p.length + " ภาพ</span></div></button>";
+        '<span class="mono">' + p.length + UI.photos + "</span></div></button>";
     }).join("");
     var lb = $("lightbox"), lbImg = $("lb-img"), lbThumbs = $("lb-thumbs"), album = [], shot = 0;
     function show(i) {
@@ -774,7 +842,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
       var a = albums[+el.dataset.a];
       album = pics(a);
       $("lb-title").textContent = a.title || "";
-      lbThumbs.innerHTML = album.map(function (src, j) { return '<button type="button" data-j="' + j + '" aria-label="ภาพที่ ' + (j + 1) + '"><img src="' + esc(src) + '" alt="" loading="lazy"></button>'; }).join("");
+      lbThumbs.innerHTML = album.map(function (src, j) { return '<button type="button" data-j="' + j + '" aria-label="' + UI.photo_n + (j + 1) + '"><img src="' + esc(src) + '" alt="" loading="lazy"></button>'; }).join("");
       lbThumbs.hidden = album.length < 2;
       $("lb-prev").hidden = $("lb-next").hidden = album.length < 2;
       lb.hidden = false; document.body.style.overflow = "hidden";
@@ -858,12 +926,12 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
     $("packages-note").textContent = d.packages_note || "";
     $("packs").innerHTML = (d.packages || []).map(function (p) {
       var head = p.popular
-        ? '<div class="top"><h3>' + esc(p.name) + '</h3><span class="tag">ยอดนิยม</span></div><p class="th" style="margin-top:-14px">' + esc(p.name_th) + "</p>"
+        ? '<div class="top"><h3>' + esc(p.name) + '</h3><span class="tag">' + UI.popular + '</span></div><p class="th" style="margin-top:-14px">' + esc(p.name_th) + "</p>"
         : "<div><h3>" + esc(p.name) + '</h3><p class="th">' + esc(p.name_th) + "</p></div>";
       return '<article class="pack' + (p.popular ? " feature" : "") + '">' + head +
         '<div><div class="price"><sup>฿</sup>' + esc(p.price) + '</div><div class="unit">' + esc(p.unit) + "</div></div>" +
         "<ul>" + (p.items || []).map(function (it) { return "<li>" + esc(it) + "</li>"; }).join("") + "</ul>" +
-        '<a class="btn" href="#contact">เลือกแพ็กเกจนี้</a></article>';
+        '<a class="btn" href="#contact">' + UI.choose + '</a></article>';
     }).join("");
 
     $("timeline").innerHTML = (d.process || []).map(function (s, i) {
@@ -873,13 +941,13 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
     var contact = $("contact-list");
     contact.innerHTML = (d.contact || []).map(function (c, i) {
       return '<div class="ch"><span class="label">' + esc(c.label) + '</span><span class="v" id="cv' + i + '">' + esc(c.value) +
-        '</span><button class="btn" type="button" data-copy="' + i + '">คัดลอก</button></div>';
+        '</span><button class="btn" type="button" data-copy="' + i + '">' + UI.copy + '</button></div>';
     }).join("");
     contact.addEventListener("click", function (e) {
       var b = e.target.closest("[data-copy]"); if (!b) return;
       var val = $("cv" + b.dataset.copy);
-      function done() { b.textContent = "คัดลอกแล้ว"; setTimeout(function () { b.textContent = "คัดลอก"; }, 1800); }
-      function fallback() { var r = document.createRange(); r.selectNodeContents(val); var s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = "กด Ctrl+C"; }
+      function done() { b.textContent = UI.copied; setTimeout(function () { b.textContent = UI.copy; }, 1800); }
+      function fallback() { var r = document.createRange(); r.selectNodeContents(val); var s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = UI.copy_key; }
       try { navigator.clipboard.writeText(val.textContent).then(done, fallback); } catch (err) { fallback(); }
     });
 

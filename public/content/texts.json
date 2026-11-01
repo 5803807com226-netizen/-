@@ -2,55 +2,77 @@
   "brand": "Hiddenrolls",
   "hero": {
     "label": "Event & brand video · Bangkok",
+    "label_en": "Event & brand · Video & photo · Bangkok",
     "headline": "Your event,",
     "headline_highlight": "worth",
     "headline_end": "rewatching.",
-    "intro": "วิดีโอและคอนเทนต์สำหรับอีเวนต์และแบรนด์ ที่ทำให้งานของคุณยังถูกพูดถึงต่อ แม้งานจะจบไปแล้ว"
+    "intro": "วิดีโอและคอนเทนต์สำหรับอีเวนต์และแบรนด์ ที่ทำให้งานของคุณยังถูกพูดถึงต่อ แม้งานจะจบไปแล้ว",
+    "intro_en": "Video and content for events and brands that keep people talking long after the night is over."
   },
   "work_cta": "อยากได้งานแบบนี้สำหรับอีเวนต์หรือแบรนด์ของคุณ",
+  "work_cta_en": "Want work like this for your event or brand?",
   "services_intro": "เลือกเฉพาะส่วนที่ต้องการ หรือให้ดูแลทั้งหมดตั้งแต่ไอเดียจนถึงไฟล์พร้อมโพสต์",
+  "services_intro_en": "Pick only the parts you need, or hand over everything from the first idea to post-ready files.",
   "services": [
     {
       "en": "Event",
       "th": "ถ่ายอีเวนต์",
-      "text": "งานเปิดตัวสินค้า งานบริษัท งานวิ่ง ป๊อปอัป และงานเปิดร้าน เก็บทั้งบรรยากาศและคนในงาน"
+      "th_en": "Event coverage",
+      "text": "งานเปิดตัวสินค้า งานบริษัท งานวิ่ง ป๊อปอัป และงานเปิดร้าน เก็บทั้งบรรยากาศและคนในงาน",
+      "text_en": "Product launches, corporate events, runs, pop-ups and store openings — capturing both the atmosphere and the people."
     },
     {
       "en": "Brand",
       "th": "คอนเทนต์แบรนด์",
-      "text": "คลิปสั้นสำหรับ Reels และ TikTok ที่เล่าเรื่องสินค้าหรือร้านให้น่าสนใจ"
+      "th_en": "Brand content",
+      "text": "คลิปสั้นสำหรับ Reels และ TikTok ที่เล่าเรื่องสินค้าหรือร้านให้น่าสนใจ",
+      "text_en": "Short clips for Reels and TikTok that make your product or venue worth watching."
     },
     {
       "en": "Concept",
       "th": "คิดคอนเทนต์",
-      "text": "วางไอเดียและเขียนสคริปต์ให้ก่อนวันถ่าย รู้ล่วงหน้าว่าจะได้คลิปแบบไหน"
+      "th_en": "Content planning",
+      "text": "วางไอเดียและเขียนสคริปต์ให้ก่อนวันถ่าย รู้ล่วงหน้าว่าจะได้คลิปแบบไหน",
+      "text_en": "Ideas and scripts before shoot day, so you know exactly what you'll get."
     },
     {
       "en": "Edit",
       "th": "ตัดต่อ",
-      "text": "ตัดให้ทันจังหวะ ใส่ซับ เกรดสี ส่งทั้งแนวตั้งและแนวนอน พร้อมภาพนิ่งจากงาน"
+      "th_en": "Editing",
+      "text": "ตัดให้ทันจังหวะ ใส่ซับ เกรดสี ส่งทั้งแนวตั้งและแนวนอน พร้อมภาพนิ่งจากงาน",
+      "text_en": "Cut to the beat, subtitles and colour grading, delivered vertical and horizontal, with stills from the day."
     }
   ],
   "process": [
     {
       "title": "คุยบรีฟ",
-      "text": "รู้จักแบรนด์ กลุ่มลูกค้า และเป้าหมาย"
+      "title_en": "Brief",
+      "text": "รู้จักแบรนด์ กลุ่มลูกค้า และเป้าหมาย",
+      "text_en": "Get to know your brand, audience and goals."
     },
     {
       "title": "วางคอนเทนต์",
-      "text": "ส่งไอเดียและสคริปต์ให้อนุมัติ"
+      "title_en": "Plan",
+      "text": "ส่งไอเดียและสคริปต์ให้อนุมัติ",
+      "text_en": "Ideas and scripts sent for your approval."
     },
     {
       "title": "วันงาน",
-      "text": "เก็บทุกช่วงสำคัญของงาน"
+      "title_en": "Shoot day",
+      "text": "เก็บทุกช่วงสำคัญของงาน",
+      "text_en": "Every key moment of the day, covered."
     },
     {
       "title": "ตัดต่อ",
-      "text": "ส่งดราฟต์ให้ดู แก้ไขได้ตามแพ็กเกจ"
+      "title_en": "Edit",
+      "text": "ส่งดราฟต์ให้ดู แก้ไขได้ตามแพ็กเกจ",
+      "text_en": "Drafts to review, revisions as per package."
     },
     {
       "title": "ส่งงาน",
-      "text": "ไฟล์พร้อมโพสต์ ทุกขนาดที่ต้องใช้"
+      "title_en": "Deliver",
+      "text": "ไฟล์พร้อมโพสต์ ทุกขนาดที่ต้องใช้",
+      "text_en": "Post-ready files in every size you need."
     }
   ]
 }

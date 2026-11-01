@@ -6,10 +6,16 @@
       "category": "brand",
       "featured": true,
       "deliverable": "คลิป Cinematic แนวตั้ง 25 วิ",
+      "deliverable_en": "25s vertical cinematic clip",
       "tags": [
         "Cinematic",
         "ถ่ายวิดีโอ",
         "เกรดสี"
+      ],
+      "tags_en": [
+        "Cinematic",
+        "Filming",
+        "Colour grading"
       ],
       "video": "/media/aftersix.mp4",
       "poster": "/media/aftersix.jpg"
@@ -20,24 +26,38 @@
       "category": "food",
       "featured": false,
       "deliverable": "คลิปซีรีส์แนวตั้ง 65 วิ",
+      "deliverable_en": "65s vertical series episode",
       "tags": [
         "รีวิวร้านอาหาร",
         "ถ่ายวิดีโอ",
         "ตัดต่อ"
+      ],
+      "tags_en": [
+        "Food review",
+        "Filming",
+        "Editing"
       ],
       "video": "/media/ep1-bisque.mp4",
       "poster": "/media/ep1-bisque.jpg"
     },
     {
       "title": "จากฮอลล์ว่าง สู่คืนคอนเสิร์ต",
+      "title_en": "From Empty Hall to Showtime",
       "client": "FAYE Concert · Timelapse",
       "category": "event",
       "deliverable": "Timelapse แนวตั้ง 57 วิ",
+      "deliverable_en": "57s vertical timelapse",
       "tags": [
         "Timelapse",
         "คอนเสิร์ต",
         "ถ่ายวิดีโอ",
         "ตัดต่อ"
+      ],
+      "tags_en": [
+        "Timelapse",
+        "Concert",
+        "Filming",
+        "Editing"
       ],
       "featured": true,
       "video": "/media/faye-timelapse-261101-221812.mp4",
@@ -45,28 +65,44 @@
     },
     {
       "title": "FAYE — ทุกโมเมนต์ในคืนคอนเสิร์ต",
+      "title_en": "FAYE — Every Moment of Concert Night",
       "client": "FAYE Concert · Event recap",
       "category": "event",
       "deliverable": "คลิปรีแคปแนวตั้ง 2 นาที",
+      "deliverable_en": "2-min vertical recap",
       "tags": [
         "Event recap",
         "คอนเสิร์ต",
         "Vlog",
         "ตัดต่อ"
       ],
+      "tags_en": [
+        "Event recap",
+        "Concert",
+        "Vlog",
+        "Editing"
+      ],
       "featured": false,
       "video": "/media/faye-v-1-261101-223802.mp4"
     },
     {
       "title": "ตามติดทริปแฟนมีตติ้งต่างประเทศ",
+      "title_en": "On the Road: An Overseas Fan Meeting Tour",
       "client": "Fan meeting tour · Travel vlog",
       "category": "event",
       "deliverable": "Reels แนวตั้ง 50 วิ",
+      "deliverable_en": "50s vertical Reel",
       "tags": [
         "Vlog",
         "แฟนมีตติ้ง",
         "ถ่ายต่างประเทศ",
         "ตัดต่อ"
+      ],
+      "tags_en": [
+        "Vlog",
+        "Fan meeting",
+        "Shot abroad",
+        "Editing"
       ],
       "featured": false,
       "video": "/media/reels-60-sec-261101-223616.mp4"
@@ -76,11 +112,18 @@
       "client": "Luxury watches · Product reel",
       "category": "brand",
       "deliverable": "คลิปสินค้าแนวตั้ง 30 วิ",
+      "deliverable_en": "30s vertical product clip",
       "tags": [
         "Product",
         "Macro",
         "ถ่ายสินค้า",
         "กราฟิกชื่อรุ่น"
+      ],
+      "tags_en": [
+        "Product",
+        "Macro",
+        "Product filming",
+        "Model titles"
       ],
       "featured": true,
       "video": "/media/saveclip-app-aqmvdcjcuhvkmk0prwllzlhkecn-261101-224701.mp4"
@@ -90,11 +133,18 @@
       "client": "Brand event · Fine dining",
       "category": "event",
       "deliverable": "คลิปไฮไลต์อีเวนต์ 60 วิ",
+      "deliverable_en": "60s event highlight",
       "tags": [
         "Brand event",
         "Fine dining",
         "ถ่ายวิดีโอ",
         "ตัดต่อ"
+      ],
+      "tags_en": [
+        "Brand event",
+        "Fine dining",
+        "Filming",
+        "Editing"
       ],
       "featured": true,
       "video": "/media/event-the-kinopolis-1-261101-225520.mp4"
@@ -104,11 +154,18 @@
       "client": "Chef interview · Chapter I",
       "category": "food",
       "deliverable": "คลิปสัมภาษณ์แนวตั้ง 80 วิ",
+      "deliverable_en": "80s vertical interview",
       "tags": [
         "สัมภาษณ์เชฟ",
         "Food storytelling",
         "ถ่ายวิดีโอ",
         "ตัดต่อ"
+      ],
+      "tags_en": [
+        "Chef interview",
+        "Food storytelling",
+        "Filming",
+        "Editing"
       ],
       "featured": true,
       "video": "/media/saveclip-app-aqpyyawuboxd8fqxqj3rf1n-dsz-261101-225831.mp4"

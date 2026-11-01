@@ -1,256 +1,373 @@
 # Admin forms for Pages CMS (https://pagescms.org). Each form saves its own file in content/.
+# Fields ending in _en are the English version shown when a visitor switches the site to EN.
 media:
   input: public/media
   output: /media
   rename: safe
-
 content:
+- name: works
+  label: ผลงาน
+  type: file
+  path: public/content/works.json
+  format: json
+  fields:
   - name: works
-    label: ผลงาน
-    type: file
-    path: public/content/works.json
-    format: json
+    label: ผลงานทั้งหมด (ลากเรียงลำดับได้ ชิ้นบนสุดขึ้นก่อน)
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{index}. {title} · {client}'
     fields:
-      - name: works
-        label: ผลงานทั้งหมด (ลากเรียงลำดับได้ ชิ้นบนสุดขึ้นก่อน)
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{index}. {title} · {client}"
-        fields:
-          - name: title
-            label: ชื่องาน
-            type: string
-            required: true
-          - name: client
-            label: ลูกค้า / ซีรีส์ (ตัวเล็กเหนือชื่องาน)
-            type: string
-          - name: category
-            label: หมวด
-            type: select
-            options:
-              values:
-                - name: event
-                  label: อีเวนต์ · คอนเสิร์ต (คอนเสิร์ต แฟนมีต งานเปิดตัว ดินเนอร์แบรนด์)
-                - name: brand
-                  label: แบรนด์ · สินค้า (คลิปสินค้า ร้าน คาเฟ่ โฆษณา)
-                - name: food
-                  label: อาหาร · เชฟ (รีวิวอาหาร สัมภาษณ์เชฟ ซีรีส์ทำอาหาร)
-                - name: charity
-                  label: มูลนิธิ · CSR
-          - name: featured
-            label: แสดงในสไลด์หน้าแรก
-            type: boolean
-            description: แนะนำ 3–5 ชิ้น
-          - name: deliverable
-            label: สิ่งที่ส่งมอบ (เช่น ไฮไลต์ 60 วิ + คลิปสั้น 4 คลิป)
-            type: string
-          - name: tags
-            label: ป้ายงานที่ทำ (เช่น ถ่ายวิดีโอ, ตัดต่อ)
-            type: string
-            list: true
-          - name: video
-            label: คลิป (.mp4 ที่ย่อด้วยเครื่องมือย่อคลิปแล้ว)
-            type: file
-            options:
-              extensions: [mp4]
-          - name: poster
-            label: ภาพปกคลิป (ไม่ต้องเลือกก็ได้ เว็บใช้ภาพปกที่ได้มาคู่กับคลิปให้เอง เลือกเฉพาะเมื่ออยากใช้ภาพอื่น)
-            type: image
-
-  - name: longform
-    label: คลิปยาว (16:9)
-    type: file
-    path: public/content/longform.json
-    format: json
+    - name: title
+      label: ชื่องาน
+      type: string
+      required: true
+    - type: string
+      name: title_en
+      label: ↳ English · ชื่องาน
+      description: ภาษาอังกฤษ ไม่ใส่ก็ได้ ถ้าว่างหน้าเว็บภาษาอังกฤษจะใช้ข้อความภาษาไทยแทน
+    - name: client
+      label: ลูกค้า / ซีรีส์ (ตัวเล็กเหนือชื่องาน)
+      type: string
+    - type: string
+      name: client_en
+      label: ↳ English · ลูกค้า / ซีรีส์
+      description: ภาษาอังกฤษ ไม่ใส่ก็ได้ ถ้าว่างหน้าเว็บภาษาอังกฤษจะใช้ข้อความภาษาไทยแทน
+    - name: category
+      label: หมวด
+      type: select
+      options:
+        values:
+        - name: event
+          label: อีเวนต์ · คอนเสิร์ต (คอนเสิร์ต แฟนมีต งานเปิดตัว ดินเนอร์แบรนด์)
+        - name: brand
+          label: แบรนด์ · สินค้า (คลิปสินค้า ร้าน คาเฟ่ โฆษณา)
+        - name: food
+          label: อาหาร · เชฟ (รีวิวอาหาร สัมภาษณ์เชฟ ซีรีส์ทำอาหาร)
+        - name: charity
+          label: มูลนิธิ · CSR
+    - name: featured
+      label: แสดงในสไลด์หน้าแรก
+      type: boolean
+      description: แนะนำ 3–5 ชิ้น
+    - name: deliverable
+      label: สิ่งที่ส่งมอบ (เช่น ไฮไลต์ 60 วิ + คลิปสั้น 4 คลิป)
+      type: string
+    - type: string
+      name: deliverable_en
+      label: ↳ English · สิ่งที่ส่งมอบ
+      description: ภาษาอังกฤษ ไม่ใส่ก็ได้ ถ้าว่างหน้าเว็บภาษาอังกฤษจะใช้ข้อความภาษาไทยแทน
+    - name: tags
+      label: ป้ายงานที่ทำ (เช่น ถ่ายวิดีโอ, ตัดต่อ)
+      type: string
+      list: true
+    - type: string
+      list: true
+      name: tags_en
+      label: ↳ English · ป้ายงานที่ทำ
+      description: ภาษาอังกฤษ ไม่ใส่ก็ได้ ถ้าว่างหน้าเว็บภาษาอังกฤษจะใช้ข้อความภาษาไทยแทน
+    - name: video
+      label: คลิป (.mp4 ที่ย่อด้วยเครื่องมือย่อคลิปแล้ว)
+      type: file
+      options:
+        extensions:
+        - mp4
+    - name: poster
+      label: ภาพปกคลิป (ไม่ต้องเลือกก็ได้ เว็บใช้ภาพปกที่ได้มาคู่กับคลิปให้เอง เลือกเฉพาะเมื่ออยากใช้ภาพอื่น)
+      type: image
+- name: longform
+  label: คลิปยาว (16:9)
+  type: file
+  path: public/content/longform.json
+  format: json
+  fields:
+  - name: films
+    label: คลิปยาวทั้งหมด (ลากเรียงลำดับได้ ชิ้นบนสุดแสดงใหญ่เต็มแถว)
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{index}. {title} · {client}'
     fields:
-      - name: films
-        label: คลิปยาวทั้งหมด (ลากเรียงลำดับได้ ชิ้นบนสุดแสดงใหญ่เต็มแถว)
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{index}. {title} · {client}"
-        fields:
-          - name: title
-            label: ชื่องาน
-            type: string
-            required: true
-          - name: client
-            label: ลูกค้า / ซีรีส์ (ตัวเล็กเหนือชื่องาน)
-            type: string
-          - name: deliverable
-            label: ข้อความเล็กด้านขวา (เช่น สารคดี 4 นาที)
-            type: string
-          - name: video
-            label: คลิป (.mp4 ที่ย่อด้วยเครื่องมือย่อคลิปแล้ว ไม่เกิน 20MB)
-            type: file
-            options:
-              extensions: [mp4]
-          - name: poster
-            label: ภาพปกคลิป (ไม่ต้องเลือกก็ได้ เว็บใช้ภาพปกที่ได้มาคู่กับคลิปให้เอง เลือกเฉพาะเมื่ออยากใช้ภาพอื่น)
-            type: image
-
-  - name: photos
-    label: ภาพถ่าย
-    type: file
-    path: public/content/photos.json
-    format: json
+    - name: title
+      label: ชื่องาน
+      type: string
+      required: true
+    - type: string
+      name: title_en
+      label: ↳ English · ชื่องาน
+      description: ภาษาอังกฤษ ไม่ใส่ก็ได้ ถ้าว่างหน้าเว็บภาษาอังกฤษจะใช้ข้อความภาษาไทยแทน
+    - name: client
+      label: ลูกค้า / ซีรีส์ (ตัวเล็กเหนือชื่องาน)
+      type: string
+    - type: string
+      name: client_en
+      label: ↳ English · ลูกค้า / ซีรีส์
+      description: ภาษาอังกฤษ ไม่ใส่ก็ได้ ถ้าว่างหน้าเว็บภาษาอังกฤษจะใช้ข้อความภาษาไทยแทน
+    - name: deliverable
+      label: ข้อความเล็กด้านขวา (เช่น สารคดี 4 นาที)
+      type: string
+    - type: string
+      name: deliverable_en
+      label: ↳ English · ข้อความเล็กด้านขวา
+      description: ภาษาอังกฤษ ไม่ใส่ก็ได้ ถ้าว่างหน้าเว็บภาษาอังกฤษจะใช้ข้อความภาษาไทยแทน
+    - name: video
+      label: คลิป (.mp4 ที่ย่อด้วยเครื่องมือย่อคลิปแล้ว ไม่เกิน 20MB)
+      type: file
+      options:
+        extensions:
+        - mp4
+    - name: poster
+      label: ภาพปกคลิป (ไม่ต้องเลือกก็ได้ เว็บใช้ภาพปกที่ได้มาคู่กับคลิปให้เอง เลือกเฉพาะเมื่ออยากใช้ภาพอื่น)
+      type: image
+- name: photos
+  label: ภาพถ่าย
+  type: file
+  path: public/content/photos.json
+  format: json
+  fields:
+  - name: albums
+    label: อัลบั้มภาพถ่าย (ลากเรียงลำดับได้ อัลบั้มบนสุดขึ้นก่อน)
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{index}. {title} · {client}'
     fields:
-      - name: albums
-        label: อัลบั้มภาพถ่าย (ลากเรียงลำดับได้ อัลบั้มบนสุดขึ้นก่อน)
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{index}. {title} · {client}"
-        fields:
-          - name: title
-            label: ชื่ออัลบั้ม / ชื่องาน
-            type: string
-            required: true
-          - name: client
-            label: ลูกค้า / ประเภทงาน (ตัวเล็กเหนือชื่อ)
-            type: string
-          - name: photos
-            label: ภาพในอัลบั้ม (ภาพแรกเป็นปก ลากเรียงได้ ใช้ภาพที่ย่อด้วยเครื่องมือย่อภาพแล้ว)
-            type: image
-            options:
-              multiple:
-                max: 60
-              extensions: [jpg, jpeg, png, webp]
-
-  - name: texts
-    label: ข้อความหน้าเว็บ
-    type: file
-    path: public/content/texts.json
-    format: json
+    - name: title
+      label: ชื่ออัลบั้ม / ชื่องาน
+      type: string
+      required: true
+    - type: string
+      name: title_en
+      label: ↳ English · ชื่ออัลบั้ม / ชื่องาน
+      description: ภาษาอังกฤษ ไม่ใส่ก็ได้ ถ้าว่างหน้าเว็บภาษาอังกฤษจะใช้ข้อความภาษาไทยแทน
+    - name: client
+      label: ลูกค้า / ประเภทงาน (ตัวเล็กเหนือชื่อ)
+      type: string
+    - type: string
+      name: client_en
+      label: ↳ English · ลูกค้า / ประเภทงาน
+      description: ภาษาอังกฤษ ไม่ใส่ก็ได้ ถ้าว่างหน้าเว็บภาษาอังกฤษจะใช้ข้อความภาษาไทยแทน
+    - name: photos
+      label: ภาพในอัลบั้ม (ภาพแรกเป็นปก ลากเรียงได้ ใช้ภาพที่ย่อด้วยเครื่องมือย่อภาพแล้ว)
+      type: image
+      options:
+        multiple:
+          max: 60
+        extensions:
+        - jpg
+        - jpeg
+        - png
+        - webp
+- name: texts
+  label: ข้อความหน้าเว็บ
+  type: file
+  path: public/content/texts.json
+  format: json
+  fields:
+  - name: brand
+    label: ชื่อแบรนด์ (ใช้เป็นชื่อแท็บเบราว์เซอร์ และแสดงมุมซ้ายบนถ้ายังไม่มีโลโก้ ใส่ / เพื่อให้เป็นตัวเอียงสีส้ม)
+    type: string
+  - name: logo
+    label: โลโก้มุมซ้ายบน (ไม่ใส่ก็ได้ ถ้าใส่จะแทนชื่อแบรนด์ แนะนำ .png พื้นใส หรือ .svg สีขาว)
+    type: image
+    options:
+      extensions:
+      - png
+      - svg
+      - webp
+      - jpg
+      - jpeg
+  - name: favicon
+    label: ไอคอนบนแท็บเบราว์เซอร์ (ภาพสี่เหลี่ยมจัตุรัส .png อย่างน้อย 180×180 ไม่ใส่จะใช้ตัวอักษรแรกของชื่อแบรนด์)
+    type: image
+    options:
+      extensions:
+      - png
+      - svg
+      - ico
+      - jpg
+      - jpeg
+  - name: hero
+    label: หน้าแรก
+    type: object
     fields:
-      - name: brand
-        label: ชื่อแบรนด์ (ใช้เป็นชื่อแท็บเบราว์เซอร์ และแสดงมุมซ้ายบนถ้ายังไม่มีโลโก้ ใส่ / เพื่อให้เป็นตัวเอียงสีส้ม)
-        type: string
-      - name: logo
-        label: โลโก้มุมซ้ายบน (ไม่ใส่ก็ได้ ถ้าใส่จะแทนชื่อแบรนด์ แนะนำ .png พื้นใส หรือ .svg สีขาว)
-        type: image
-        options:
-          extensions: [png, svg, webp, jpg, jpeg]
-      - name: favicon
-        label: ไอคอนบนแท็บเบราว์เซอร์ (ภาพสี่เหลี่ยมจัตุรัส .png อย่างน้อย 180×180 ไม่ใส่จะใช้ตัวอักษรแรกของชื่อแบรนด์)
-        type: image
-        options:
-          extensions: [png, svg, ico, jpg, jpeg]
-      - name: hero
-        label: หน้าแรก
-        type: object
-        fields:
-          - name: label
-            label: ข้อความเล็กด้านบน
-            type: string
-          - name: headline
-            label: หัวข้อ บรรทัดแรก
-            type: string
-          - name: headline_highlight
-            label: หัวข้อ บรรทัดสอง คำที่เป็นตัวเอียงสีส้ม
-            type: string
-          - name: headline_end
-            label: หัวข้อ บรรทัดสอง ส่วนที่เหลือ
-            type: string
-          - name: intro
-            label: คำโปรย
-            type: text
-      - name: work_cta
-        label: ข้อความใต้ผลงาน (คู่กับปุ่มจองคิว)
-        type: string
-      - name: services_intro
-        label: คำอธิบายส่วนบริการ
-        type: text
-      - name: services
-        label: บริการ
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{th}"
-        fields:
-          - name: en
-            label: ชื่ออังกฤษ (ตัวเอียงสีส้ม)
-            type: string
-          - name: th
-            label: ชื่อไทย
-            type: string
-          - name: text
-            label: รายละเอียด
-            type: text
-      - name: process
-        label: ขั้นตอนการทำงาน
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{index}. {title}"
-        fields:
-          - name: title
-            label: ขั้นตอน
-            type: string
-          - name: text
-            label: รายละเอียด
-            type: string
-
-  - name: pricing
-    label: แพ็กเกจและราคา
-    type: file
-    path: public/content/pricing.json
-    format: json
+    - name: label
+      label: ข้อความเล็กด้านบน
+      type: string
+    - type: string
+      name: label_en
+      label: ↳ English · ข้อความเล็กด้านบน
+      description: ภาษาอังกฤษ ไม่ใส่ก็ได้ ถ้าว่างหน้าเว็บภาษาอังกฤษจะใช้ข้อความภาษาไทยแทน
+    - name: headline
+      label: หัวข้อ บรรทัดแรก
+      type: string
+    - type: string
+      name: headline_en
+      label: ↳ English · หัวข้อ บรรทัดแรก
+      description: ภาษาอังกฤษ ไม่ใส่ก็ได้ ถ้าว่างหน้าเว็บภาษาอังกฤษจะใช้ข้อความภาษาไทยแทน
+    - name: headline_highlight
+      label: หัวข้อ บรรทัดสอง คำที่เป็นตัวเอียงสีส้ม
+      type: string
+    - type: string
+      name: headline_highlight_en
+      label: ↳ English · หัวข้อ บรรทัดสอง คำที่เป็นตัวเอียงสีส้ม
+      description: ภาษาอังกฤษ ไม่ใส่ก็ได้ ถ้าว่างหน้าเว็บภาษาอังกฤษจะใช้ข้อความภาษาไทยแทน
+    - name: headline_end
+      label: หัวข้อ บรรทัดสอง ส่วนที่เหลือ
+      type: string
+    - type: string
+      name: headline_end_en
+      label: ↳ English · หัวข้อ บรรทัดสอง ส่วนที่เหลือ
+      description: ภาษาอังกฤษ ไม่ใส่ก็ได้ ถ้าว่างหน้าเว็บภาษาอังกฤษจะใช้ข้อความภาษาไทยแทน
+    - name: intro
+      label: คำโปรย
+      type: text
+    - type: text
+      name: intro_en
+      label: ↳ English · คำโปรย
+      description: ภาษาอังกฤษ ไม่ใส่ก็ได้ ถ้าว่างหน้าเว็บภาษาอังกฤษจะใช้ข้อความภาษาไทยแทน
+  - name: work_cta
+    label: ข้อความใต้ผลงาน (คู่กับปุ่มจองคิว)
+    type: string
+  - type: string
+    name: work_cta_en
+    label: ↳ English · ข้อความใต้ผลงาน
+    description: ภาษาอังกฤษ ไม่ใส่ก็ได้ ถ้าว่างหน้าเว็บภาษาอังกฤษจะใช้ข้อความภาษาไทยแทน
+  - name: services_intro
+    label: คำอธิบายส่วนบริการ
+    type: text
+  - type: text
+    name: services_intro_en
+    label: ↳ English · คำอธิบายส่วนบริการ
+    description: ภาษาอังกฤษ ไม่ใส่ก็ได้ ถ้าว่างหน้าเว็บภาษาอังกฤษจะใช้ข้อความภาษาไทยแทน
+  - name: services
+    label: บริการ
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{th}'
     fields:
-      - name: packages_intro
-        label: คำอธิบายส่วนแพ็กเกจ
-        type: text
-      - name: packages
-        label: แพ็กเกจ
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{name} · ฿{price}"
-        fields:
-          - name: name
-            label: ชื่อแพ็กเกจ (อังกฤษ)
-            type: string
-          - name: name_th
-            label: ชื่อไทย / คำอธิบายสั้น
-            type: string
-          - name: price
-            label: ราคา (ตัวเลข เช่น 7,900)
-            type: string
-          - name: unit
-            label: หน่วย (เช่น ต่อครึ่งวัน)
-            type: string
-          - name: items
-            label: รายการที่ได้
-            type: string
-            list: true
-          - name: popular
-            label: ติดป้ายยอดนิยม (การ์ดสีขาว)
-            type: boolean
-      - name: packages_note
-        label: หมายเหตุใต้แพ็กเกจ
-        type: string
-
+    - name: en
+      label: ชื่ออังกฤษ (ตัวเอียงสีส้ม)
+      type: string
+    - name: th
+      label: ชื่อไทย
+      type: string
+    - type: string
+      name: th_en
+      label: ↳ English · ชื่อไทย
+      description: ภาษาอังกฤษ ไม่ใส่ก็ได้ ถ้าว่างหน้าเว็บภาษาอังกฤษจะใช้ข้อความภาษาไทยแทน
+    - name: text
+      label: รายละเอียด
+      type: text
+    - type: text
+      name: text_en
+      label: ↳ English · รายละเอียด
+      description: ภาษาอังกฤษ ไม่ใส่ก็ได้ ถ้าว่างหน้าเว็บภาษาอังกฤษจะใช้ข้อความภาษาไทยแทน
+  - name: process
+    label: ขั้นตอนการทำงาน
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{index}. {title}'
+    fields:
+    - name: title
+      label: ขั้นตอน
+      type: string
+    - type: string
+      name: title_en
+      label: ↳ English · ขั้นตอน
+      description: ภาษาอังกฤษ ไม่ใส่ก็ได้ ถ้าว่างหน้าเว็บภาษาอังกฤษจะใช้ข้อความภาษาไทยแทน
+    - name: text
+      label: รายละเอียด
+      type: string
+    - type: string
+      name: text_en
+      label: ↳ English · รายละเอียด
+      description: ภาษาอังกฤษ ไม่ใส่ก็ได้ ถ้าว่างหน้าเว็บภาษาอังกฤษจะใช้ข้อความภาษาไทยแทน
+- name: pricing
+  label: แพ็กเกจและราคา
+  type: file
+  path: public/content/pricing.json
+  format: json
+  fields:
+  - name: packages_intro
+    label: คำอธิบายส่วนแพ็กเกจ
+    type: text
+  - type: text
+    name: packages_intro_en
+    label: ↳ English · คำอธิบายส่วนแพ็กเกจ
+    description: ภาษาอังกฤษ ไม่ใส่ก็ได้ ถ้าว่างหน้าเว็บภาษาอังกฤษจะใช้ข้อความภาษาไทยแทน
+  - name: packages
+    label: แพ็กเกจ
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{name} · ฿{price}'
+    fields:
+    - name: name
+      label: ชื่อแพ็กเกจ (อังกฤษ)
+      type: string
+    - name: name_th
+      label: ชื่อไทย / คำอธิบายสั้น
+      type: string
+    - type: string
+      name: name_th_en
+      label: ↳ English · ชื่อไทย / คำอธิบายสั้น
+      description: ภาษาอังกฤษ ไม่ใส่ก็ได้ ถ้าว่างหน้าเว็บภาษาอังกฤษจะใช้ข้อความภาษาไทยแทน
+    - name: price
+      label: ราคา (ตัวเลข เช่น 7,900)
+      type: string
+    - name: unit
+      label: หน่วย (เช่น ต่อครึ่งวัน)
+      type: string
+    - type: string
+      name: unit_en
+      label: ↳ English · หน่วย
+      description: ภาษาอังกฤษ ไม่ใส่ก็ได้ ถ้าว่างหน้าเว็บภาษาอังกฤษจะใช้ข้อความภาษาไทยแทน
+    - name: items
+      label: รายการที่ได้
+      type: string
+      list: true
+    - type: string
+      list: true
+      name: items_en
+      label: ↳ English · รายการที่ได้
+      description: ภาษาอังกฤษ ไม่ใส่ก็ได้ ถ้าว่างหน้าเว็บภาษาอังกฤษจะใช้ข้อความภาษาไทยแทน
+    - name: popular
+      label: ติดป้ายยอดนิยม (การ์ดสีขาว)
+      type: boolean
+  - name: packages_note
+    label: หมายเหตุใต้แพ็กเกจ
+    type: string
+  - type: string
+    name: packages_note_en
+    label: ↳ English · หมายเหตุใต้แพ็กเกจ
+    description: ภาษาอังกฤษ ไม่ใส่ก็ได้ ถ้าว่างหน้าเว็บภาษาอังกฤษจะใช้ข้อความภาษาไทยแทน
+- name: contact
+  label: ช่องทางติดต่อ
+  type: file
+  path: public/content/contact.json
+  format: json
+  fields:
   - name: contact
     label: ช่องทางติดต่อ
-    type: file
-    path: public/content/contact.json
-    format: json
+    type: object
+    list: true
     fields:
-      - name: contact
-        label: ช่องทางติดต่อ
-        type: object
-        list: true
-        fields:
-          - name: label
-            label: ช่องทาง (เช่น LINE)
-            type: string
-          - name: value
-            label: ไอดี / เบอร์
-            type: string
+    - name: label
+      label: ช่องทาง (เช่น LINE)
+      type: string
+    - type: string
+      name: label_en
+      label: ↳ English · ช่องทาง
+      description: ภาษาอังกฤษ ไม่ใส่ก็ได้ ถ้าว่างหน้าเว็บภาษาอังกฤษจะใช้ข้อความภาษาไทยแทน
+    - name: value
+      label: ไอดี / เบอร์
+      type: string

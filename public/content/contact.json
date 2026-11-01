@@ -10,6 +10,7 @@
     },
     {
       "label": "โทร",
+      "label_en": "Phone",
       "value": "08X-XXX-XXXX"
     }
   ]
