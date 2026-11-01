@@ -1,0 +1,85 @@
+{
+  "works": [
+    {
+      "title": "After Six",
+      "client": "Café · Cinematic",
+      "category": "brand",
+      "deliverable": "คลิป Cinematic แนวตั้ง 25 วิ",
+      "tags": [
+        "Cinematic",
+        "ถ่ายวิดีโอ",
+        "เกรดสี"
+      ],
+      "video": "/media/aftersix.mp4",
+      "poster": "/media/aftersix.jpg",
+      "featured": true
+    },
+    {
+      "title": "Bisque",
+      "client": "Chef Joe · EP.1",
+      "category": "food",
+      "deliverable": "คลิปซีรีส์แนวตั้ง 65 วิ",
+      "tags": [
+        "รีวิวร้านอาหาร",
+        "ถ่ายวิดีโอ",
+        "ตัดต่อ"
+      ],
+      "video": "/media/ep1-bisque.mp4",
+      "poster": "/media/ep1-bisque.jpg",
+      "featured": true
+    },
+    {
+      "title": "นาถะ SOS ส่งน้ำใจถึงหนองคาย",
+      "client": "มูลนิธินาถะ",
+      "category": "charity",
+      "deliverable": "สารคดีสั้น 3 นาทีครึ่ง",
+      "tags": [
+        "คอนเทนต์มูลนิธิ",
+        "ตัดต่อ"
+      ],
+      "video": "/media/natha-sos.mp4",
+      "poster": "/media/natha-sos.jpg",
+      "featured": true
+    },
+    {
+      "title": "Duck",
+      "client": "Chef Joe · EP.2",
+      "category": "food",
+      "deliverable": "คลิปซีรีส์แนวตั้ง 38 วิ",
+      "tags": [
+        "รีวิวร้านอาหาร",
+        "ถ่ายวิดีโอ",
+        "ตัดต่อ"
+      ],
+      "video": "/media/ep2-duck.mp4",
+      "poster": "/media/ep2-duck.jpg",
+      "featured": true
+    },
+    {
+      "title": "ทาสีโรงเรียนวัดบ้านจาน",
+      "client": "มูลนิธินาถะ",
+      "category": "charity",
+      "deliverable": "คลิปกิจกรรม 66 วิ",
+      "tags": [
+        "กิจกรรมจิตอาสา",
+        "ตัดต่อ"
+      ],
+      "video": "/media/natha-school.mp4",
+      "poster": "/media/natha-school.jpg",
+      "featured": true
+    },
+    {
+      "title": "ส่งกำลังใจถึงครอบครัวผู้ป่วย",
+      "client": "มูลนิธินาถะ",
+      "category": "charity",
+      "deliverable": "สารคดีสั้น 3 นาที",
+      "tags": [
+        "คอนเทนต์มูลนิธิ",
+        "ตัดต่อ"
+      ],
+      "video": "/media/natha-family.mp4",
+      "poster": "/media/natha-family.jpg",
+      "featured": false
+    }
+  ]
+}

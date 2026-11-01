@@ -1,0 +1,184 @@
+# Admin forms for Pages CMS (https://pagescms.org). Each form saves its own file in content/.
+media:
+  input: media
+  output: /media
+  rename: safe
+
+content:
+  - name: works
+    label: ผลงาน
+    type: file
+    path: content/works.json
+    format: json
+    fields:
+      - name: works
+        label: ผลงานทั้งหมด (ลากเรียงลำดับได้ ชิ้นบนสุดขึ้นก่อน)
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{index}. {title} · {client}"
+        fields:
+          - name: title
+            label: ชื่องาน
+            type: string
+            required: true
+          - name: client
+            label: ลูกค้า / ซีรีส์ (ตัวเล็กเหนือชื่องาน)
+            type: string
+          - name: category
+            label: หมวด
+            type: select
+            options:
+              values:
+                - name: food
+                  label: ร้านอาหาร
+                - name: brand
+                  label: แบรนด์ · Cinematic
+                - name: charity
+                  label: มูลนิธิ · กิจกรรม
+                - name: event
+                  label: อีเวนต์
+          - name: featured
+            label: แสดงในสไลด์หน้าแรก
+            type: boolean
+            description: แนะนำ 3–5 ชิ้น
+          - name: deliverable
+            label: สิ่งที่ส่งมอบ (เช่น ไฮไลต์ 60 วิ + คลิปสั้น 4 คลิป)
+            type: string
+          - name: tags
+            label: ป้ายงานที่ทำ (เช่น ถ่ายวิดีโอ, ตัดต่อ)
+            type: string
+            list: true
+          - name: video
+            label: คลิป (.mp4 ที่ย่อด้วยเครื่องมือย่อคลิปแล้ว)
+            type: file
+            options:
+              extensions: [mp4]
+          - name: poster
+            label: ภาพปกคลิป (.jpg ที่ได้มาคู่กับคลิป)
+            type: image
+
+  - name: texts
+    label: ข้อความหน้าเว็บ
+    type: file
+    path: content/texts.json
+    format: json
+    fields:
+      - name: brand
+        label: ชื่อแบรนด์ (ใส่ / เพื่อให้เป็นตัวเอียงสีส้ม เช่น NINE/SIXTEEN)
+        type: string
+      - name: hero
+        label: หน้าแรก
+        type: object
+        fields:
+          - name: label
+            label: ข้อความเล็กด้านบน
+            type: string
+          - name: headline
+            label: หัวข้อ บรรทัดแรก
+            type: string
+          - name: headline_highlight
+            label: หัวข้อ บรรทัดสอง คำที่เป็นตัวเอียงสีส้ม
+            type: string
+          - name: headline_end
+            label: หัวข้อ บรรทัดสอง ส่วนที่เหลือ
+            type: string
+          - name: intro
+            label: คำโปรย
+            type: text
+      - name: work_cta
+        label: ข้อความใต้ผลงาน (คู่กับปุ่มจองคิว)
+        type: string
+      - name: services_intro
+        label: คำอธิบายส่วนบริการ
+        type: text
+      - name: services
+        label: บริการ
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{th}"
+        fields:
+          - name: en
+            label: ชื่ออังกฤษ (ตัวเอียงสีส้ม)
+            type: string
+          - name: th
+            label: ชื่อไทย
+            type: string
+          - name: text
+            label: รายละเอียด
+            type: text
+      - name: process
+        label: ขั้นตอนการทำงาน
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{index}. {title}"
+        fields:
+          - name: title
+            label: ขั้นตอน
+            type: string
+          - name: text
+            label: รายละเอียด
+            type: string
+
+  - name: pricing
+    label: แพ็กเกจและราคา
+    type: file
+    path: content/pricing.json
+    format: json
+    fields:
+      - name: packages_intro
+        label: คำอธิบายส่วนแพ็กเกจ
+        type: text
+      - name: packages
+        label: แพ็กเกจ
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{name} · ฿{price}"
+        fields:
+          - name: name
+            label: ชื่อแพ็กเกจ (อังกฤษ)
+            type: string
+          - name: name_th
+            label: ชื่อไทย / คำอธิบายสั้น
+            type: string
+          - name: price
+            label: ราคา (ตัวเลข เช่น 7,900)
+            type: string
+          - name: unit
+            label: หน่วย (เช่น ต่อครึ่งวัน)
+            type: string
+          - name: items
+            label: รายการที่ได้
+            type: string
+            list: true
+          - name: popular
+            label: ติดป้ายยอดนิยม (การ์ดสีขาว)
+            type: boolean
+      - name: packages_note
+        label: หมายเหตุใต้แพ็กเกจ
+        type: string
+
+  - name: contact
+    label: ช่องทางติดต่อ
+    type: file
+    path: content/contact.json
+    format: json
+    fields:
+      - name: contact
+        label: ช่องทางติดต่อ
+        type: object
+        list: true
+        fields:
+          - name: label
+            label: ช่องทาง (เช่น LINE)
+            type: string
+          - name: value
+            label: ไอดี / เบอร์
+            type: string
