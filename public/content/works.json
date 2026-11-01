@@ -44,7 +44,9 @@
     },
     {
       "title": "event",
-      "featured": false
+      "featured": false,
+      "video": "/media/faye-timelapse-261101-221812.mp4",
+      "poster": "/media/faye-timelapse-261101-221812.jpg"
     }
   ]
 }
