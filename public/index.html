@@ -550,10 +550,10 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
     $("brand").innerHTML = d.logo
       ? '<img src="' + esc(d.logo) + '" alt="' + esc(brand.replace("/", " ")) + '">'
       : esc(brand).replace("/", "<i>/</i>");
-    // tab icon: the uploaded one, otherwise the brand's first letter on tungsten
+    // tab icon: the uploaded one, otherwise the brand's first letter, white on black
     var icon = d.favicon || "data:image/svg+xml," + encodeURIComponent(
-      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#f0a14b"/>' +
-      '<text x="32" y="46" text-anchor="middle" font-family="Impact,Arial Narrow,sans-serif" font-size="40" fill="#0f0d0b">' +
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#000"/>' +
+      '<text x="32" y="47" text-anchor="middle" font-family="Impact,Arial Narrow,sans-serif" font-size="42" fill="#fff">' +
       esc((brand.trim()[0] || "•").toUpperCase()) + "</text></svg>");
     $("favicon").href = icon;
     $("touch-icon").href = d.favicon || d.logo || icon;
