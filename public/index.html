@@ -599,7 +599,8 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
       if (!v || v.tagName !== "VIDEO") return;
       v.muted = !sound;
       var p = v.play();
-      if (p) p.catch(function () { v.muted = true; v.play().catch(function () {}); });
+      // only retry muted when sound was refused; a clip paused on purpose rejects too and must stay paused
+      if (p) p.catch(function (err) { if (sound && err && err.name === "NotAllowedError") { v.muted = true; v.play().catch(function () {}); } });
     }
     // fill in real clip length once the browser knows it
     document.addEventListener("loadedmetadata", function (e) {
