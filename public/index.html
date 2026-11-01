@@ -542,7 +542,12 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
     });
 
   function render(d) {
-    var works = (d.works || []).filter(function (w) { return w && (w.title || w.video); });
+    // the shrink tool uploads a cover next to every clip (same name, .jpg), so use it when no cover was picked
+    function withCover(w) {
+      if (w && !w.poster && /\.mp4$/i.test(w.video || "")) w.poster = w.video.replace(/\.mp4$/i, ".jpg");
+      return w;
+    }
+    var works = (d.works || []).map(withCover).filter(function (w) { return w && (w.title || w.video); });
 
     // ---------- brand + hero ----------
     var brand = d.brand || "";
@@ -711,9 +716,9 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
     }
 
     // ---------- long-form films ----------
-    var films = (d.films || []).filter(function (f) { return f && (f.title || f.video); });
+    var films = (d.films || []).map(withCover).filter(function (f) { return f && (f.title || f.video); });
     $("films").innerHTML = films.map(function (f, i) {
-      var media = f.poster ? '<img class="media" src="' + esc(f.poster) + '" alt="" loading="lazy">'
+      var media = f.poster ? '<img class="media" src="' + esc(f.poster) + '" alt="" loading="lazy" onerror="this.remove()">'
         : '<div class="scene ' + SCENES[(i + 3) % SCENES.length] + '"></div>';
       return '<button class="film" type="button" data-f="' + i + '" aria-label="เปิดดู ' + esc(f.title) + '">' +
         '<div class="frame16">' + media + '<span class="bars"></span>' +
