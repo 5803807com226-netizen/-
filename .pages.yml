@@ -31,14 +31,14 @@ content:
             type: select
             options:
               values:
-                - name: food
-                  label: ร้านอาหาร
-                - name: brand
-                  label: แบรนด์ · Cinematic
-                - name: charity
-                  label: มูลนิธิ · กิจกรรม
                 - name: event
-                  label: อีเวนต์
+                  label: อีเวนต์ · คอนเสิร์ต (คอนเสิร์ต แฟนมีต งานเปิดตัว ดินเนอร์แบรนด์)
+                - name: brand
+                  label: แบรนด์ · สินค้า (คลิปสินค้า ร้าน คาเฟ่ โฆษณา)
+                - name: food
+                  label: อาหาร · เชฟ (รีวิวอาหาร สัมภาษณ์เชฟ ซีรีส์ทำอาหาร)
+                - name: charity
+                  label: มูลนิธิ · CSR
           - name: featured
             label: แสดงในสไลด์หน้าแรก
             type: boolean
