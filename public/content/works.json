@@ -41,6 +41,10 @@
       ],
       "video": "/media/ep2-duck.mp4",
       "poster": "/media/ep2-duck.jpg"
+    },
+    {
+      "title": "event",
+      "featured": false
     }
   ]
 }
