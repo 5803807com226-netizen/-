@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="รับถ่ายวิดีโอและทำคอนเทนต์สำหรับอีเวนต์และแบรนด์">
-<link rel="icon" href="/media/aftersix.jpg">
+<link rel="icon" id="favicon" href="data:,">
+<link rel="apple-touch-icon" id="touch-icon" href="data:,">
 <style>html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
 <title>Nine Sixteen Studio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -78,6 +79,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
 .brand-mark { font-family: var(--display); font-size: 1.35rem; letter-spacing: .02em; line-height: 1; }
 .brand-mark i { font-family: var(--serif); font-style: italic; color: var(--tungsten); font-size: 1.5rem; }
+.brand-mark img { display: block; height: 34px; width: auto; max-width: 180px; object-fit: contain; }
 .nav { display: flex; gap: 24px; font-size: .9rem; }
 .nav a { text-decoration: none; color: var(--muted); transition: color .2s; }
 .nav a:hover { color: var(--paper); }
@@ -545,7 +547,16 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
     // ---------- brand + hero ----------
     var brand = d.brand || "";
     document.title = brand.replace("/", " ") || document.title;
-    $("brand").innerHTML = esc(brand).replace("/", "<i>/</i>");
+    $("brand").innerHTML = d.logo
+      ? '<img src="' + esc(d.logo) + '" alt="' + esc(brand.replace("/", " ")) + '">'
+      : esc(brand).replace("/", "<i>/</i>");
+    // tab icon: the uploaded one, otherwise the brand's first letter on tungsten
+    var icon = d.favicon || "data:image/svg+xml," + encodeURIComponent(
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#f0a14b"/>' +
+      '<text x="32" y="46" text-anchor="middle" font-family="Impact,Arial Narrow,sans-serif" font-size="40" fill="#0f0d0b">' +
+      esc((brand.trim()[0] || "•").toUpperCase()) + "</text></svg>");
+    $("favicon").href = icon;
+    $("touch-icon").href = d.favicon || d.logo || icon;
     $("footer-copy").textContent = "© " + new Date().getFullYear() + " " + brand;
     var h = d.hero || {};
     $("hero-label").textContent = h.label || "";

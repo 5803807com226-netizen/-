@@ -128,8 +128,18 @@ content:
     format: json
     fields:
       - name: brand
-        label: ชื่อแบรนด์ (ใส่ / เพื่อให้เป็นตัวเอียงสีส้ม เช่น NINE/SIXTEEN)
+        label: ชื่อแบรนด์ (ใช้เป็นชื่อแท็บเบราว์เซอร์ และแสดงมุมซ้ายบนถ้ายังไม่มีโลโก้ ใส่ / เพื่อให้เป็นตัวเอียงสีส้ม)
         type: string
+      - name: logo
+        label: โลโก้มุมซ้ายบน (ไม่ใส่ก็ได้ ถ้าใส่จะแทนชื่อแบรนด์ แนะนำ .png พื้นใส หรือ .svg สีขาว)
+        type: image
+        options:
+          extensions: [png, svg, webp, jpg, jpeg]
+      - name: favicon
+        label: ไอคอนบนแท็บเบราว์เซอร์ (ภาพสี่เหลี่ยมจัตุรัส .png อย่างน้อย 180×180 ไม่ใส่จะใช้ตัวอักษรแรกของชื่อแบรนด์)
+        type: image
+        options:
+          extensions: [png, svg, ico, jpg, jpeg]
       - name: hero
         label: หน้าแรก
         type: object
