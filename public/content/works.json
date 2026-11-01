@@ -29,20 +29,6 @@
       "poster": "/media/ep1-bisque.jpg"
     },
     {
-      "title": "Duck",
-      "client": "Chef Joe · EP.2",
-      "category": "food",
-      "featured": true,
-      "deliverable": "คลิปซีรีส์แนวตั้ง 38 วิ",
-      "tags": [
-        "รีวิวร้านอาหาร",
-        "ถ่ายวิดีโอ",
-        "ตัดต่อ"
-      ],
-      "video": "/media/ep2-duck.mp4",
-      "poster": "/media/ep2-duck.jpg"
-    },
-    {
       "title": "Event",
       "category": "event",
       "featured": true,
