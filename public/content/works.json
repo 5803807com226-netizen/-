@@ -42,7 +42,7 @@
     },
     {
       "title": "content",
-      "featured": false,
+      "featured": true,
       "video": "/media/reels-60-sec-261101-223616.mp4"
     }
   ]
