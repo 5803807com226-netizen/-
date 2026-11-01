@@ -1,8 +1,12 @@
-// Cloudflare Worker that serves the static site in ./public
+// Cloudflare Worker that serves the static site in ./public.
+// Requests for /media/* go through src/worker.js first so clips support byte ranges (needed by iPhone Safari).
 {
   "name": "work",
+  "main": "src/worker.js",
   "compatibility_date": "2025-06-01",
   "assets": {
-    "directory": "./public"
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": ["/media/*"]
   }
 }
