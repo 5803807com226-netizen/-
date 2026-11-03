@@ -44,47 +44,43 @@
       "name": "Shoot + Edit",
       "name_th": "ถ่าย + ตัดต่อ งานอีเวนต์",
       "name_th_en": "Event filming + editing",
-      "price": "5,500",
-      "unit": "ได้คลิป 2 คลิป",
-      "unit_en": "2 videos",
+      "price": "4,500",
+      "unit": "ต่อ 1 อีเวนต์ · 1 คลิป",
+      "unit_en": "per event · 1 video",
       "items": [
-        "ถ่ายอีเวนต์ครึ่งวัน (คอนเสิร์ต แฟนมีต งานเปิดตัว)",
+        "ถ่ายอีเวนต์ 1 งาน (คอนเสิร์ต แฟนมีต งานเปิดตัว)",
         "คลิปไฮไลต์ Cinematic 60 วิ 1 คลิป",
-        "คลิปคอนเทนต์สั้น 1 คลิป",
-        "เกรดสีทุกคลิป",
+        "ถ่าย + ตัดต่อ + เกรดสี",
         "แก้ไขได้ 2 ครั้ง",
         "ส่งงานภายใน 3 วัน",
-        "เพิ่มเสียงพากย์เล่าเรื่องในคลิปคอนเทนต์ +1,000"
+        "เพิ่มคลิปที่ 2: คอนเทนต์เล่าเรื่องราวพร้อมเสียงพากย์ +1,000"
       ],
       "items_en": [
-        "Half-day event coverage (concerts, fan meets, launches)",
-        "1 × 60s cinematic highlight",
-        "1 × short content video",
-        "Colour grading on every video",
+        "Coverage for 1 event (concerts, fan meets, launches)",
+        "1 × 60s cinematic highlight video",
+        "Filming, editing and colour grading",
         "2 rounds of revisions",
         "Delivered within 3 days",
-        "Storytelling voice-over on the content video: +1,000"
+        "Add video 2: storytelling content with voice-over +1,000"
       ],
       "popular": false
     },
     {
       "name": "Full content",
-      "name_th": "คอนเทนต์แบรนด์รายเดือน",
-      "name_th_en": "Monthly brand content",
+      "name_th": "คอนเทนต์ Reels รายเดือน",
+      "name_th_en": "Monthly short-form Reels",
       "price": "9,900",
       "unit": "ต่อเดือน · 4 คลิป",
       "unit_en": "per month · 4 videos",
       "items": [
-        "คลิปร้านอาหาร คาเฟ่ และสินค้า",
-        "วางแผนคอนเทนต์รายเดือน",
-        "เขียนสคริปต์ทุกคลิป",
-        "ตัดต่อ + เกรดสี พร้อมโพสต์"
+        "Reels สั้น 4 คลิป พร้อมโพสต์ทุกสัปดาห์",
+        "คิดไอเดีย วางแผน และเขียนสคริปต์ให้ครบ",
+        "ถ่าย ตัดต่อ และเกรดสีในแพ็กเกจเดียว"
       ],
       "items_en": [
-        "Videos for restaurants, cafés and products",
-        "Monthly content plan",
-        "Scripts for every video",
-        "Edited, colour graded and ready to post"
+        "4 short Reels, ready to post every week",
+        "Ideas, planning and scripts all taken care of",
+        "Filming, editing and colour grading in one package"
       ],
       "popular": true
     }

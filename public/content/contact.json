@@ -2,16 +2,32 @@
   "contact": [
     {
       "label": "LINE",
-      "value": "@ninesixteen"
+      "value": "@comartrsu",
+      "url": "https://line.me/R/ti/p/@comartrsu",
+      "action": "เพิ่มเพื่อน",
+      "action_en": "Add friend"
     },
     {
-      "label": "Instagram · TikTok",
-      "value": "@ninesixteen.studio"
+      "label": "Instagram",
+      "value": "_hiddenrolls",
+      "url": "https://www.instagram.com/_hiddenrolls/",
+      "action": "เปิด Instagram",
+      "action_en": "Open Instagram"
+    },
+    {
+      "label": "TikTok",
+      "value": "_hiddenrolls",
+      "url": "https://www.tiktok.com/@_hiddenrolls",
+      "action": "เปิด TikTok",
+      "action_en": "Open TikTok"
     },
     {
       "label": "โทร",
       "label_en": "Phone",
-      "value": "08X-XXX-XXXX"
+      "value": "0988469938",
+      "url": "tel:0988469938",
+      "action": "โทรออก",
+      "action_en": "Call"
     }
   ]
 }

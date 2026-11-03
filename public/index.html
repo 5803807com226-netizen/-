@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" id="meta-desc" content="รับถ่ายวิดีโอและทำคอนเทนต์สำหรับอีเวนต์และแบรนด์">
+<meta name="description" id="meta-desc" content="วิดีโอและภาพถ่ายสำหรับอีเวนต์ แบรนด์ และผู้คน">
 <link rel="icon" id="favicon" href="data:,">
 <link rel="apple-touch-icon" id="touch-icon" href="data:,">
 <style>html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
@@ -109,6 +109,11 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 }
 .hero-copy { grid-area: copy; align-self: end; }
 .hero-feat { grid-area: feat; align-self: start; }
+.hero-stage-wrap { grid-area: stage; min-width: 0; }
+.hero-view-switch { display: flex; width: max-content; margin: 0 0 12px auto; padding: 3px; border: 1px solid var(--line); border-radius: 999px; background: var(--ink); position: relative; z-index: 16; }
+.hero-view-switch button { padding: 4px 9px; border: 0; border-radius: 999px; background: none; color: var(--muted); font: 500 .65rem var(--mono); letter-spacing: .08em; cursor: pointer; }
+.hero-view-switch button:hover { color: var(--paper); }
+.hero-view-switch button[aria-pressed="true"] { background: var(--paper); color: var(--ink); }
 .rec { display: inline-flex; align-items: center; gap: 8px; }
 .rec::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--rec); animation: blink 1.2s steps(2) infinite; }
 @keyframes blink { 50% { opacity: .15; } }
@@ -151,6 +156,9 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
   box-shadow: 0 30px 80px -30px rgba(0,0,0,.8);
 }
 .stage .reel:not(.is-active) .play, .stage .reel:not(.is-active) .safe { display: none; }
+.stage .reel.photo-slide { aspect-ratio: 4 / 5; }
+.stage .photo-slide .media { transform: scale(1.02); transition: transform 6.2s cubic-bezier(.2,.7,.2,1); }
+.stage .photo-slide.is-active .media { transform: scale(1.08); }
 .stage .reel .cap strong { font-size: 1.1rem; }
 
 
@@ -349,10 +357,12 @@ section { padding-block: 104px 0; }
 .contact { padding-block: 120px 56px; }
 .contact h2 { font-family: var(--display); font-size: clamp(3.5rem, 13vw, 10rem); line-height: .88; text-transform: uppercase; }
 .contact h2 em { font-family: var(--serif); font-style: italic; text-transform: none; color: var(--tungsten); }
-.contact-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 48px; }
+.contact-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 48px; }
 .ch { border: 1px solid var(--line); padding: 22px; display: grid; gap: 6px; min-width: 0; }
 .ch .v { font-size: var(--step-1); font-weight: 500; overflow-wrap: anywhere; }
-.ch button { justify-self: start; margin-top: 8px; }
+.ch-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.ch-actions .btn { padding: 8px 14px; }
+@media (max-width: 1000px) { .contact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 760px) { .contact-grid { grid-template-columns: 1fr; } }
 footer { border-top: 1px solid var(--line); padding-block: 24px; }
 footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: .85rem; }
@@ -417,7 +427,13 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
           <p class="hero-lede" id="hero-intro"></p>
         </div>
 
-        <div class="stage" id="stage" aria-roledescription="carousel" aria-label="ผลงานเด่น" data-i18n-aria="featured"></div>
+        <div class="hero-stage-wrap">
+          <div class="hero-view-switch" id="hero-view-switch" role="group" aria-label="Video / Photo">
+            <button type="button" data-hero-mode="video" aria-pressed="true">VIDEO</button>
+            <button type="button" data-hero-mode="photo" aria-pressed="false">PHOTO</button>
+          </div>
+          <div class="stage" id="stage" aria-roledescription="carousel" aria-label="ผลงานเด่น" data-i18n-aria="featured"></div>
+        </div>
 
         <div class="hero-feat">
           <div class="feat" id="feat" aria-live="polite">
@@ -542,25 +558,25 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
   })();
   var UI = {
     th: {
-      meta_desc: "รับถ่ายวิดีโอและทำคอนเทนต์สำหรับอีเวนต์และแบรนด์", menu: "เมนูหลัก",
+      meta_desc: "วิดีโอและภาพถ่ายสำหรับอีเวนต์ แบรนด์ และผู้คน", menu: "เมนูหลัก",
       nav_work: "ผลงาน", nav_services: "บริการ", nav_packages: "แพ็กเกจ", nav_process: "ขั้นตอน", book: "จองคิวถ่าย",
       featured: "ผลงานเด่น", delivered: "ส่งมอบ", prev_work: "ผลงานก่อนหน้า", next_work: "ผลงานถัดไป",
       see_packages: "ดูแพ็กเกจและราคา", all_work: "ผลงานทั้งหมด ↓", work_types: "ประเภทผลงาน", filter_work: "กรองผลงาน",
       close: "ปิด ✕", photo_view: "ดูภาพถ่าย", prev_photo: "ภาพก่อนหน้า", next_photo: "ภาพถัดไป",
       load_error: "โหลดข้อมูลเว็บไม่สำเร็จ ลองรีเฟรชหน้าอีกครั้ง", open: "เปิดดู ", open_album: "เปิดอัลบั้ม ",
       work_n: "ผลงานที่ ", photo_n: "ภาพที่ ", photos: " ภาพ", all: "ทั้งหมด", popular: "ยอดนิยม",
-      choose: "เลือกแพ็กเกจนี้", copy: "คัดลอก", copied: "คัดลอกแล้ว", copy_key: "กด Ctrl+C",
+      choose: "เลือกแพ็กเกจนี้", copy: "คัดลอก", copied: "คัดลอกแล้ว", copy_key: "กด Ctrl+C", open_link: "เปิดลิงก์",
       cat: { event: "อีเวนต์ · คอนเสิร์ต", brand: "แบรนด์ · สินค้า", food: "อาหาร · เชฟ", charity: "มูลนิธิ · CSR" }
     },
     en: {
-      meta_desc: "Event and brand videos, photos and content", menu: "Main menu",
+      meta_desc: "Video and photography for events, brands and people", menu: "Main menu",
       nav_work: "Work", nav_services: "Services", nav_packages: "Packages", nav_process: "Process", book: "Book a shoot",
       featured: "Featured work", delivered: "Delivered", prev_work: "Previous work", next_work: "Next work",
       see_packages: "See packages & pricing", all_work: "All work ↓", work_types: "Type of work", filter_work: "Filter work",
       close: "Close ✕", photo_view: "Photo viewer", prev_photo: "Previous photo", next_photo: "Next photo",
       load_error: "Couldn't load the site. Please refresh the page.", open: "Watch ", open_album: "Open album ",
       work_n: "Work ", photo_n: "Photo ", photos: " photos", all: "All", popular: "Popular",
-      choose: "Choose this package", copy: "Copy", copied: "Copied", copy_key: "Press Ctrl+C",
+      choose: "Choose this package", copy: "Copy", copied: "Copied", copy_key: "Press Ctrl+C", open_link: "Open link",
       cat: { event: "Events · Concerts", brand: "Brands · Products", food: "Food · Chefs", charity: "Foundations · CSR" }
     }
   }[LANG];
@@ -650,17 +666,20 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
         ' muted loop playsinline preload="' + (inViewer ? "auto" : "metadata") + '"' + (inViewer ? " controls" : "") + "></video>";
     }
     function reel(w, i, interactive, inViewer) {
+      var isPhoto = !!w.photo;
       var el = document.createElement(interactive ? "button" : "div");
-      if (interactive) { el.type = "button"; el.setAttribute("aria-label", UI.open + (w.title || "")); }
-      el.className = "reel";
+      if (interactive) { el.type = "button"; el.setAttribute("aria-label", (isPhoto ? UI.open_album : UI.open) + (w.title || "")); }
+      el.className = "reel" + (isPhoto ? " photo-slide" : "");
       el.dataset.c = w.category || "";
       el.dataset.i = i;
       el.style.border = "0"; el.style.padding = "0"; el.style.textAlign = "left"; el.style.font = "inherit";
       el.innerHTML =
         mediaHTML(w, i, inViewer) +
-        '<div class="hud"><span class="tc" data-off="' + (i * 7) + '" data-dur="30">00:00:00:00</span><span class="dur"></span></div>' +
+        (isPhoto
+          ? '<div class="hud"><span>PHOTOGRAPHY</span><span>' + pad(w.photoCount) + UI.photos + "</span></div>"
+          : '<div class="hud"><span class="tc" data-off="' + (i * 7) + '" data-dur="30">00:00:00:00</span><span class="dur"></span></div>') +
         '<div class="cap"><small>' + esc(w.client) + "</small><strong>" + esc(w.title) + "</strong></div>" +
-        (interactive ? '<div class="play"><b>▶ PLAY</b></div>' : "");
+        (interactive ? '<div class="play"><b>' + (isPhoto ? "VIEW" : "▶ PLAY") + "</b></div>" : "");
       return el;
     }
     function play(v, sound) {
@@ -678,23 +697,44 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
       card.querySelector(".tc").dataset.dur = Math.max(1, v.duration);
     }, true);
 
-    // ---------- featured carousel ----------
-    var featured = works.filter(function (w) { return w.featured; });
-    if (!featured.length) featured = works.slice(0, 5);
-    var stage = $("stage"), progress = $("progress"), feat = $("feat"), viewer = $("viewer"), slot = $("viewer-slot");
-    var n = featured.length, active = 0, elapsed = 0, DUR = 6000, paused = false, last = 0;
-    var cards = featured.map(function (w, i) {
-      var idx = works.indexOf(w);
-      var el = reel(w, idx, true);
-      el.addEventListener("click", function () { if (i === active) openViewer(idx); else go(i); });
-      stage.appendChild(el);
-      var b = document.createElement("button");
-      b.type = "button"; b.setAttribute("aria-label", UI.work_n + (i + 1)); b.innerHTML = "<i></i>";
-      b.addEventListener("click", function () { go(i); });
-      progress.appendChild(b);
-      return el;
+    // ---------- featured carousel: videos by default, with a compact photo switch ----------
+    function pics(a) { var p = a.photos; return (Array.isArray(p) ? p : p ? [p] : []).filter(Boolean); }
+    var albums = (d.albums || []).filter(function (a) { return a && pics(a).length; });
+    var videoSlides = works.filter(function (w) { return w.featured; });
+    if (!videoSlides.length) videoSlides = works.slice(0, 5);
+    var photoSlides = [];
+    albums.forEach(function (a, ai) {
+      var p = pics(a);
+      photoSlides.push({
+        photo: p[0], poster: p[0], albumIndex: ai, shotIndex: 0, photoCount: p.length,
+        title: a.title, client: a.client, tags: ["Photography"], deliverable: p.length + UI.photos
+      });
     });
-    var fills = progress.querySelectorAll("i");
+    var featured = videoSlides.length ? videoSlides : photoSlides;
+    var heroMode = videoSlides.length ? "video" : "photo";
+    var stage = $("stage"), progress = $("progress"), feat = $("feat"), viewer = $("viewer"), slot = $("viewer-slot");
+    var viewSwitch = $("hero-view-switch");
+    var n = 0, active = 0, elapsed = 0, DUR = 6000, paused = false, last = 0, cards = [], fills = [];
+    function buildSlides() {
+      stage.querySelectorAll("video").forEach(function (v) { v.pause(); });
+      stage.innerHTML = ""; progress.innerHTML = "";
+      n = featured.length; active = 0; elapsed = 0;
+      document.querySelector(".hero-feat .controls").hidden = n < 2;
+      cards = featured.map(function (w, i) {
+        var el = reel(w, i, true);
+        el.addEventListener("click", function () {
+          if (i !== active) { go(i); return; }
+          if (w.photo) openAlbum(w.albumIndex, w.shotIndex); else openViewer(works.indexOf(w));
+        });
+        stage.appendChild(el);
+        var b = document.createElement("button");
+        b.type = "button"; b.setAttribute("aria-label", UI.work_n + (i + 1)); b.innerHTML = "<i></i>";
+        b.addEventListener("click", function () { go(i); });
+        progress.appendChild(b);
+        return el;
+      });
+      fills = progress.querySelectorAll("i");
+    }
 
     function layout() {
       cards.forEach(function (c, i) {
@@ -731,6 +771,19 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
       active = (i + n) % n; elapsed = 0; layout();
       if (!quiet) { feat.classList.remove("swap"); void feat.offsetWidth; feat.classList.add("swap"); }
     }
+    function setHeroMode(mode) {
+      var slides = mode === "photo" ? photoSlides : videoSlides;
+      if (!slides.length || slides === featured) return;
+      featured = slides; heroMode = mode; last = 0;
+      buildSlides();
+      viewSwitch.querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.heroMode === heroMode)); });
+      go(0, true);
+    }
+    viewSwitch.querySelectorAll("button").forEach(function (b) {
+      b.setAttribute("aria-pressed", String(b.dataset.heroMode === heroMode));
+      b.addEventListener("click", function () { setHeroMode(b.dataset.heroMode); });
+    });
+    viewSwitch.hidden = !videoSlides.length || !photoSlides.length;
     $("prev").addEventListener("click", function () { go(active - 1); });
     $("next").addEventListener("click", function () { go(active + 1); });
     stage.addEventListener("mouseenter", function () { paused = true; });
@@ -744,15 +797,16 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
     });
     function loop(now) {
       var dt = last ? now - last : 0; last = now;
-      if (!paused && !document.hidden && viewer.hidden) {
+      if (n > 1 && !paused && !document.hidden && viewer.hidden && $("lightbox").hidden) {
         elapsed += dt;
         if (elapsed >= DUR) go(active + 1); else paint();
       }
       requestAnimationFrame(loop);
     }
+    buildSlides();
     if (n) {
       go(0, true);
-      if (n > 1 && !reduce) requestAnimationFrame(loop);
+      if ((videoSlides.length > 1 || photoSlides.length > 1) && !reduce) requestAnimationFrame(loop);
     } else {
       document.querySelector(".hero-feat").hidden = true;
       stage.hidden = true;
@@ -819,8 +873,6 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
     });
 
     // ---------- photo albums + lightbox ----------
-    function pics(a) { var p = a.photos; return (Array.isArray(p) ? p : p ? [p] : []).filter(Boolean); }
-    var albums = (d.albums || []).filter(function (a) { return a && pics(a).length; });
     $("albums").innerHTML = albums.map(function (a, i) {
       var p = pics(a), stack = p.slice(0, 3).map(function (src) { return '<img src="' + esc(src) + '" alt="" loading="lazy">'; }).join("");
       return '<button class="album" type="button" data-a="' + i + '" aria-label="' + UI.open_album + esc(a.title) + '">' +
@@ -837,16 +889,18 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
       var cur = lbThumbs.children[shot]; if (cur) cur.scrollIntoView({ block: "nearest", inline: "center" });
       new Image().src = album[(shot + 1) % album.length];
     }
-    $("albums").addEventListener("click", function (e) {
-      var el = e.target.closest(".album"); if (!el) return;
-      var a = albums[+el.dataset.a];
-      album = pics(a);
+    function openAlbum(ai, start) {
+      var a = albums[ai]; if (!a) return;
+      album = pics(a); if (!album.length) return;
       $("lb-title").textContent = a.title || "";
       lbThumbs.innerHTML = album.map(function (src, j) { return '<button type="button" data-j="' + j + '" aria-label="' + UI.photo_n + (j + 1) + '"><img src="' + esc(src) + '" alt="" loading="lazy"></button>'; }).join("");
       lbThumbs.hidden = album.length < 2;
       $("lb-prev").hidden = $("lb-next").hidden = album.length < 2;
       lb.hidden = false; document.body.style.overflow = "hidden";
-      show(0); $("lb-close").focus();
+      show(start || 0); $("lb-close").focus();
+    }
+    $("albums").addEventListener("click", function (e) {
+      var el = e.target.closest(".album"); if (el) openAlbum(+el.dataset.a, 0);
     });
     function closeLb() { lb.hidden = true; lbImg.removeAttribute("src"); document.body.style.overflow = ""; }
     lbThumbs.addEventListener("click", function (e) { var b = e.target.closest("[data-j]"); if (b) show(+b.dataset.j); });
@@ -940,8 +994,11 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 
     var contact = $("contact-list");
     contact.innerHTML = (d.contact || []).map(function (c, i) {
+      var url = /^(https?:\/\/|tel:)/i.test(c.url || "") ? c.url : "";
+      var external = /^https?:\/\//i.test(url) ? ' target="_blank" rel="noopener noreferrer"' : "";
+      var link = url ? '<a class="btn" href="' + esc(url) + '"' + external + '>' + esc(c.action || UI.open_link) + "</a>" : "";
       return '<div class="ch"><span class="label">' + esc(c.label) + '</span><span class="v" id="cv' + i + '">' + esc(c.value) +
-        '</span><button class="btn" type="button" data-copy="' + i + '">' + UI.copy + '</button></div>';
+        '</span><div class="ch-actions">' + link + '<button class="btn" type="button" data-copy="' + i + '">' + UI.copy + '</button></div></div>';
     }).join("");
     contact.addEventListener("click", function (e) {
       var b = e.target.closest("[data-copy]"); if (!b) return;
@@ -972,7 +1029,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
         cur.style.left = e.clientX + "px"; cur.style.top = e.clientY + "px";
         var t = e.target.closest && e.target.closest("#grid .reel, #stage .reel.is-active, .film, .album");
         cur.classList.toggle("on", !!t);
-        if (t) curLabel.textContent = t.classList.contains("album") ? "VIEW" : "▶ PLAY";
+        if (t) curLabel.textContent = t.classList.contains("album") || t.classList.contains("photo-slide") ? "VIEW" : "▶ PLAY";
       });
     }
   }

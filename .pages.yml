@@ -371,3 +371,14 @@ content:
     - name: value
       label: ไอดี / เบอร์
       type: string
+    - name: url
+      label: ลิงก์เมื่อกดปุ่ม (ไม่ใส่ก็ได้)
+      type: string
+      description: เช่น https://www.instagram.com/username หรือ tel:0812345678
+    - name: action
+      label: ข้อความปุ่มลิงก์ (เช่น เพิ่มเพื่อน หรือ เปิด Instagram)
+      type: string
+    - name: action_en
+      label: ↳ English · ข้อความปุ่มลิงก์
+      type: string
+      description: ภาษาอังกฤษ ไม่ใส่ก็ได้ ถ้าว่างหน้าเว็บภาษาอังกฤษจะใช้ข้อความภาษาไทยแทน
