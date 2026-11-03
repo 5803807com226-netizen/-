@@ -18,15 +18,15 @@
       "en": "Event",
       "th": "ถ่ายอีเวนต์",
       "th_en": "Event coverage",
-      "text": "งานเปิดตัวสินค้า งานบริษัท งานวิ่ง ป๊อปอัป และงานเปิดร้าน เก็บทั้งบรรยากาศและคนในงาน",
-      "text_en": "Product launches, corporate events, runs, pop-ups and store openings — capturing both the atmosphere and the people."
+      "text": "คอนเสิร์ต แฟนมีตติ้ง งานเปิดตัวสินค้า และดินเนอร์ของแบรนด์ เก็บทั้งบรรยากาศและคนในงาน",
+      "text_en": "Concerts, fan meetings, product launches and brand dinners — capturing both the atmosphere and the people."
     },
     {
       "en": "Brand",
       "th": "คอนเทนต์แบรนด์",
       "th_en": "Brand content",
-      "text": "คลิปสั้นสำหรับ Reels และ TikTok ที่เล่าเรื่องสินค้าหรือร้านให้น่าสนใจ",
-      "text_en": "Short clips for Reels and TikTok that make your product or venue worth watching."
+      "text": "คลิปสั้นสำหรับ Reels และ TikTok ทั้งร้านอาหาร คาเฟ่ และสินค้า เล่าเรื่องให้น่าดู",
+      "text_en": "Short Reels and TikTok videos for restaurants, cafés and products that are worth watching."
     },
     {
       "en": "Concept",
@@ -39,8 +39,8 @@
       "en": "Edit",
       "th": "ตัดต่อ",
       "th_en": "Editing",
-      "text": "ตัดให้ทันจังหวะ ใส่ซับ เกรดสี ส่งทั้งแนวตั้งและแนวนอน พร้อมภาพนิ่งจากงาน",
-      "text_en": "Cut to the beat, subtitles and colour grading, delivered vertical and horizontal, with stills from the day."
+      "text": "ตัดให้ทันจังหวะ ใส่ซับ และเกรดสีทุกคลิป ส่งไฟล์พร้อมโพสต์",
+      "text_en": "Cut to the beat, subtitled and colour graded, delivered ready to post."
     }
   ],
   "process": [
@@ -71,8 +71,8 @@
     {
       "title": "ส่งงาน",
       "title_en": "Deliver",
-      "text": "ไฟล์พร้อมโพสต์ ทุกขนาดที่ต้องใช้",
-      "text_en": "Post-ready files in every size you need."
+      "text": "ส่งไฟล์พร้อมโพสต์ตามแพ็กเกจ",
+      "text_en": "Post-ready files, as per your package."
     }
   ]
 }

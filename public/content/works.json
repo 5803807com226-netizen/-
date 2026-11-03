@@ -30,12 +30,14 @@
       "tags": [
         "รีวิวร้านอาหาร",
         "ถ่ายวิดีโอ",
-        "ตัดต่อ"
+        "ตัดต่อ",
+        "เกรดสี"
       ],
       "tags_en": [
         "Food review",
         "Filming",
-        "Editing"
+        "Editing",
+        "Colour grading"
       ],
       "video": "/media/ep1-bisque.mp4",
       "poster": "/media/ep1-bisque.jpg"
@@ -51,13 +53,15 @@
         "Timelapse",
         "คอนเสิร์ต",
         "ถ่ายวิดีโอ",
-        "ตัดต่อ"
+        "ตัดต่อ",
+        "เกรดสี"
       ],
       "tags_en": [
         "Timelapse",
         "Concert",
         "Filming",
-        "Editing"
+        "Editing",
+        "Colour grading"
       ],
       "featured": true,
       "video": "/media/faye-timelapse-261101-221812.mp4",
@@ -74,13 +78,15 @@
         "Event recap",
         "คอนเสิร์ต",
         "Vlog",
-        "ตัดต่อ"
+        "ตัดต่อ",
+        "เกรดสี"
       ],
       "tags_en": [
         "Event recap",
         "Concert",
         "Vlog",
-        "Editing"
+        "Editing",
+        "Colour grading"
       ],
       "featured": false,
       "video": "/media/faye-v-1-261101-223802.mp4"
@@ -96,13 +102,15 @@
         "Vlog",
         "แฟนมีตติ้ง",
         "ถ่ายต่างประเทศ",
-        "ตัดต่อ"
+        "ตัดต่อ",
+        "เกรดสี"
       ],
       "tags_en": [
         "Vlog",
         "Fan meeting",
         "Shot abroad",
-        "Editing"
+        "Editing",
+        "Colour grading"
       ],
       "featured": false,
       "video": "/media/reels-60-sec-261101-223616.mp4"
@@ -117,13 +125,15 @@
         "Product",
         "Macro",
         "ถ่ายสินค้า",
-        "กราฟิกชื่อรุ่น"
+        "กราฟิกชื่อรุ่น",
+        "เกรดสี"
       ],
       "tags_en": [
         "Product",
         "Macro",
         "Product filming",
-        "Model titles"
+        "Model titles",
+        "Colour grading"
       ],
       "featured": true,
       "video": "/media/saveclip-app-aqmvdcjcuhvkmk0prwllzlhkecn-261101-224701.mp4"
@@ -138,13 +148,15 @@
         "Brand event",
         "Fine dining",
         "ถ่ายวิดีโอ",
-        "ตัดต่อ"
+        "ตัดต่อ",
+        "เกรดสี"
       ],
       "tags_en": [
         "Brand event",
         "Fine dining",
         "Filming",
-        "Editing"
+        "Editing",
+        "Colour grading"
       ],
       "featured": true,
       "video": "/media/event-the-kinopolis-1-261101-225520.mp4"
@@ -159,13 +171,15 @@
         "สัมภาษณ์เชฟ",
         "Food storytelling",
         "ถ่ายวิดีโอ",
-        "ตัดต่อ"
+        "ตัดต่อ",
+        "เกรดสี"
       ],
       "tags_en": [
         "Chef interview",
         "Food storytelling",
         "Filming",
-        "Editing"
+        "Editing",
+        "Colour grading"
       ],
       "featured": true,
       "video": "/media/saveclip-app-aqpyyawuboxd8fqxqj3rf1n-dsz-261101-225831.mp4"

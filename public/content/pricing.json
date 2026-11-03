@@ -42,42 +42,44 @@
     },
     {
       "name": "Shoot + Edit",
-      "name_th": "ถ่าย + ตัดต่อ",
-      "name_th_en": "Filming + editing",
+      "name_th": "ถ่าย + ตัดต่อ งานอีเวนต์",
+      "name_th_en": "Event filming + editing",
       "price": "8,500",
       "unit": "ได้คลิป 3 คลิป",
       "unit_en": "3 videos",
       "items": [
-        "ถ่ายอีเวนต์ครึ่งวัน",
+        "ถ่ายอีเวนต์ครึ่งวัน (คอนเสิร์ต แฟนมีต งานเปิดตัว)",
         "คลิปไฮไลต์ 60 วิ 1 คลิป",
         "คลิปคอนเทนต์สั้น 2 คลิป",
         "เกรดสีทุกคลิป",
         "แก้ไขได้ 2 ครั้ง",
-        "ส่งงานภายใน 5 วัน"
+        "ส่งงานภายใน 3 วัน"
       ],
       "items_en": [
-        "Half-day event coverage",
+        "Half-day event coverage (concerts, fan meets, launches)",
         "1 × 60s highlight video",
         "2 × short content videos",
         "Colour grading on every video",
         "2 rounds of revisions",
-        "Delivered within 5 days"
+        "Delivered within 3 days"
       ],
       "popular": false
     },
     {
       "name": "Full content",
-      "name_th": "คิดคอนเทนต์ + ถ่าย + ตัดต่อ",
-      "name_th_en": "Planning + filming + editing",
+      "name_th": "คอนเทนต์แบรนด์รายเดือน",
+      "name_th_en": "Monthly brand content",
       "price": "9,900",
       "unit": "ต่อเดือน · 4 คลิป",
       "unit_en": "per month · 4 videos",
       "items": [
+        "คลิปร้านอาหาร คาเฟ่ และสินค้า",
         "วางแผนคอนเทนต์รายเดือน",
         "เขียนสคริปต์ทุกคลิป",
         "ตัดต่อ + เกรดสี พร้อมโพสต์"
       ],
       "items_en": [
+        "Videos for restaurants, cafés and products",
         "Monthly content plan",
         "Scripts for every video",
         "Edited, colour graded and ready to post"
