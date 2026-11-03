@@ -44,18 +44,20 @@
       "name": "Shoot + Edit",
       "name_th": "ถ่าย + ตัดต่อ",
       "name_th_en": "Filming + editing",
-      "price": "7,900",
+      "price": "9,900",
       "unit": "ได้คลิป 3 คลิป",
       "unit_en": "3 videos",
       "items": [
         "ถ่ายอีเวนต์ครึ่งวัน",
         "ไฮไลต์ 60 วิ + คลิปสั้น 2 คลิป",
+        "เกรดสีทุกคลิป",
         "แก้ไขได้ 2 ครั้ง",
         "ส่งงานภายใน 5 วัน"
       ],
       "items_en": [
         "Half-day event coverage",
         "60s highlight + 2 short clips",
+        "Colour grading on every video",
         "2 rounds of revisions",
         "Delivered within 5 days"
       ],
@@ -65,20 +67,20 @@
       "name": "Full content",
       "name_th": "คิดคอนเทนต์ + ถ่าย + ตัดต่อ",
       "name_th_en": "Planning + filming + editing",
-      "price": "15,900",
+      "price": "19,900",
       "unit": "ต่อเดือน · 8 คลิป",
       "unit_en": "per month · 8 videos",
       "items": [
         "วางแผนคอนเทนต์รายเดือน",
         "เขียนสคริปต์ทุกคลิป",
         "ถ่าย 2 วัน + ภาพนิ่ง 20 ภาพ",
-        "ตัดต่อพร้อมโพสต์"
+        "ตัดต่อ + เกรดสี พร้อมโพสต์"
       ],
       "items_en": [
         "Monthly content plan",
         "Scripts for every video",
         "2 shoot days + 20 photos",
-        "Edited and ready to post"
+        "Edited, colour graded and ready to post"
       ],
       "popular": true
     }
