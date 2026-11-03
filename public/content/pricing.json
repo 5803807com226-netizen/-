@@ -6,18 +6,18 @@
       "name": "Photo",
       "name_th": "ถ่ายภาพนิ่ง",
       "name_th_en": "Photography",
-      "price": "3,500",
+      "price": "2,900",
       "unit": "ต่อครึ่งวัน",
       "unit_en": "per half day",
       "items": [
         "ถ่าย 3 ชั่วโมง",
-        "ภาพแต่งสี 30 ภาพ",
-        "ส่งไฟล์ 9:16 และ 4:5"
+        "ภาพแต่งสี 30+ ภาพ",
+        "ส่งงานภายใน 3 วัน"
       ],
       "items_en": [
         "3 hours of shooting",
-        "30 edited photos",
-        "Delivered in 9:16 and 4:5"
+        "30+ edited photos",
+        "Delivered within 3 days"
       ],
       "popular": false
     },
@@ -25,7 +25,7 @@
       "name": "Shoot only",
       "name_th": "ถ่ายอย่างเดียว",
       "name_th_en": "Filming only",
-      "price": "4,500",
+      "price": "3,900",
       "unit": "ต่อครึ่งวัน",
       "unit_en": "per half day",
       "items": [
@@ -44,19 +44,21 @@
       "name": "Shoot + Edit",
       "name_th": "ถ่าย + ตัดต่อ",
       "name_th_en": "Filming + editing",
-      "price": "9,900",
+      "price": "8,500",
       "unit": "ได้คลิป 3 คลิป",
       "unit_en": "3 videos",
       "items": [
         "ถ่ายอีเวนต์ครึ่งวัน",
-        "ไฮไลต์ 60 วิ + คลิปสั้น 2 คลิป",
+        "คลิปไฮไลต์ 60 วิ 1 คลิป",
+        "คลิปคอนเทนต์สั้น 2 คลิป",
         "เกรดสีทุกคลิป",
         "แก้ไขได้ 2 ครั้ง",
         "ส่งงานภายใน 5 วัน"
       ],
       "items_en": [
         "Half-day event coverage",
-        "60s highlight + 2 short clips",
+        "1 × 60s highlight video",
+        "2 × short content videos",
         "Colour grading on every video",
         "2 rounds of revisions",
         "Delivered within 5 days"
@@ -67,19 +69,17 @@
       "name": "Full content",
       "name_th": "คิดคอนเทนต์ + ถ่าย + ตัดต่อ",
       "name_th_en": "Planning + filming + editing",
-      "price": "19,900",
-      "unit": "ต่อเดือน · 8 คลิป",
-      "unit_en": "per month · 8 videos",
+      "price": "9,900",
+      "unit": "ต่อเดือน · 4 คลิป",
+      "unit_en": "per month · 4 videos",
       "items": [
         "วางแผนคอนเทนต์รายเดือน",
         "เขียนสคริปต์ทุกคลิป",
-        "ถ่าย 2 วัน + ภาพนิ่ง 20 ภาพ",
         "ตัดต่อ + เกรดสี พร้อมโพสต์"
       ],
       "items_en": [
         "Monthly content plan",
         "Scripts for every video",
-        "2 shoot days + 20 photos",
         "Edited, colour graded and ready to post"
       ],
       "popular": true
