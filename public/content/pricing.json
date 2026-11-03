@@ -10,12 +10,12 @@
       "unit": "ต่อครึ่งวัน",
       "unit_en": "per half day",
       "items": [
-        "ถ่าย 3 ชั่วโมง",
+        "ถ่าย 4 ชั่วโมง",
         "ภาพแต่งสี 30+ ภาพ",
         "ส่งงานภายใน 3 วัน"
       ],
       "items_en": [
-        "3 hours of shooting",
+        "4 hours of shooting",
         "30+ edited photos",
         "Delivered within 3 days"
       ],
@@ -25,7 +25,7 @@
       "name": "Shoot only",
       "name_th": "ถ่ายอย่างเดียว",
       "name_th_en": "Filming only",
-      "price": "3,900",
+      "price": "3,500",
       "unit": "ต่อครึ่งวัน",
       "unit_en": "per half day",
       "items": [
