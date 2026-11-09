@@ -1,6 +1,32 @@
 {
   "works": [
     {
+      "title": "Chronoswiss × The Kinopolis",
+      "client": "Brand event · Fine dining",
+      "category": "event",
+      "featured": true,
+      "deliverable": "คลิปไฮไลต์อีเวนต์แนวตั้ง 36 วิ",
+      "deliverable_en": "36s vertical event highlight",
+      "tags": [
+        "Brand event",
+        "Luxury watches",
+        "Fine dining",
+        "ถ่ายวิดีโอ",
+        "ตัดต่อ",
+        "เกรดสี"
+      ],
+      "tags_en": [
+        "Brand event",
+        "Luxury watches",
+        "Fine dining",
+        "Filming",
+        "Editing",
+        "Colour grading"
+      ],
+      "video": "/media/chronoswiss-kinopolis.mp4",
+      "poster": "/media/chronoswiss-kinopolis.jpg"
+    },
+    {
       "title": "After Six",
       "client": "Café · Cinematic",
       "category": "brand",
